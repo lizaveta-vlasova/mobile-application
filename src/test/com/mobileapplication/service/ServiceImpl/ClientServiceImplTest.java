@@ -51,6 +51,7 @@ public class ClientServiceImplTest {
 
     @Test
     public void testGetClientById() throws Exception {
+
     }
 
 }

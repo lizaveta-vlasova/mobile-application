@@ -19,5 +19,9 @@ public interface ContractService {
     void userBlocked (Contract contract);
     void userUnblocked(Contract contract);
     boolean isContractBlocked (Integer contractId);
+    void userBlockedByAdmin(Contract contract);
+    void userUnblockedByAdmin(Contract contract);
+
+    Contract findContractByNumber(Integer number);
 }
 

@@ -28,11 +28,14 @@
                 <li id="liAddTariff">
                     <a onclick="addTariff()" href="javascript:void(0)">УПРАВЛЕНИЕ ТАРИФАМИ</a>
                 </li>
-                <li id="liContractBlock">
-                    <a onclick="blockedContract()" href="javascript:void(0)">БЛОКИРОВКА/РАЗБЛОКИРОВКА ПОЛЬЗОВАТЕЛЯ</a>
+                <li id="liEditOptios">
+                    <a onclick="editOptions()" href="javascript:void(0)">УПРАВЛЕНИЕ ОПЦИЯМИ</a>
                 </li>
-                <li id="liNumberBlockС">
-                    <a onclick="numberBlock(${contractId})" href="javascript:void(0)">ДОБАВИТЬ/УДАЛИТЬ ОПЦИИ ДЛЯ ТАРИФА</a>
+                <li id="liFintContractPage">
+                    <a onclick="findContractPage()" href="javascript:void(0)">НАЙТИ КОНТРАКТ</a>
+                </li>
+                <li id="liAddNewClient">
+                    <a onclick="addNewClient()" href="javascript:void(0)">НОВЫЙ КЛИЕНТ</a>
                 </li>
 
             </ul>

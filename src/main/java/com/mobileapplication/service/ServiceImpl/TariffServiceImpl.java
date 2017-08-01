@@ -30,4 +30,14 @@ public class TariffServiceImpl implements TariffService {
         return tariffRepository.findOne(id);
     }
 
+    @Override
+    public Tariff addNewTariff(Tariff tariff) {
+        return tariffRepository.save(tariff);
+    }
+
+    @Override
+    public void removeTariff(Integer id) {
+     tariffRepository.delete(id);
+    }
+
 }

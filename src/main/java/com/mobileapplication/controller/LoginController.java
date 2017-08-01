@@ -34,14 +34,7 @@ public class LoginController {
         else {
             Client currentClient = loginService.login(idClient);
             return "redirect:/clientAccount/chooseContract";}
-
-//        return "redirect:/clientAccount";
-       // return "redirect:/clientAccount/chooseContract";
     }
-   /* @RequestMapping(path = "/clientAccount/tariffLogin", method = RequestMethod.GET)
-    public String clientAccountTariffgetContractNumber() {
-        return "clientAccountTariffLogin";
-    }*/
 
     @RequestMapping(path = "/clientAccount/tariffLogin{id}", params = "id")
     public String redirectToChangeTariff(Model model,Integer id){

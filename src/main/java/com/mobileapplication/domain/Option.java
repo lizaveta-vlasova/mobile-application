@@ -1,6 +1,8 @@
 package com.mobileapplication.domain;
 
 
+import org.hibernate.annotations.GeneratorType;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -8,6 +10,7 @@ import java.util.Objects;
 @Table(name = "options")
 public class Option implements Comparable<Option>{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idoption")
     private Integer optionId;
     @Column

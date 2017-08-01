@@ -70,4 +70,21 @@ public class ContractServiceImpl implements ContractService {
         else return false;
     }
 
+    @Override
+    public void userBlockedByAdmin(Contract contract) {
+        contract.setIsBlockedByAdmin(1);
+        contractRepository.save(contract);
+    }
+
+    @Override
+    public void userUnblockedByAdmin(Contract contract) {
+        contract.setIsBlockedByAdmin(0);
+        contractRepository.save(contract);
+    }
+
+    @Override
+    public Contract findContractByNumber(Integer number) {
+        return contractRepository.findContractsByNumber(number);
+    }
+
 }

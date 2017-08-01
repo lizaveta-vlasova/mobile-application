@@ -23,6 +23,7 @@
 
     <context:component-scan base-package = "com.mobileapplication.controller"/>
     <context:component-scan base-package = "com.mobileapplication.service"/>
+    <context:component-scan base-package = "com.mobileapplication.dao"/>
 
     <bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name = "prefix" value = "/WEB-INF/jsp/" />

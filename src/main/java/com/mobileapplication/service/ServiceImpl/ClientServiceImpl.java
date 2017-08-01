@@ -1,9 +1,11 @@
 package com.mobileapplication.service.ServiceImpl;
 
+import com.mobileapplication.dao.ClientDao;
 import com.mobileapplication.domain.Client;
-import com.mobileapplication.domain.Contract;
 import com.mobileapplication.repository.ClientRepository;
 import com.mobileapplication.service.ClientService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +17,29 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private ClientDao clientDao;
+
+    private static Logger LOGGER = LoggerFactory.getLogger(ClientServiceImpl.class);
+
+
     @Override
     public List<Client> clientList() {
-        return clientRepository.findAll();
+        LOGGER.info("Get full client list");
+//        return clientRepository.findAll();
+        return clientDao.findAll();
     }
 
     @Override
     public Client getClientById (Integer id){
-        return clientRepository.findOne(id);
+        LOGGER.info("Get client by ID");
+        return (Client) clientDao.getClientById(id);
+       // return clientRepository.findOne(id);
+    }
+
+    @Override
+    public Client saveClient(Client client) {
+       return clientRepository.save(client);
     }
 
 }

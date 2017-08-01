@@ -388,20 +388,7 @@ td{
     border-left: solid #8f8f8f;
 }
 
-.optionContainer {
-    padding-left: 20px;
-    width: 200px;
-    height: 100px;
-    float: left;
-}
 
-.optionContainer div{
-    font-size:20px
-}
-
-.optionContainer:not(:first-child){
-    border-left: solid #8f8f8f;
-}
 
 .clientList table{
     border-collapse: separate;
@@ -409,9 +396,5 @@ td{
 .clientList td {
     padding-left: 20px;
     padding: 10px;
-
 }
-
-
-
 

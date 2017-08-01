@@ -16,6 +16,10 @@ public class Contract {
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
+    @Column(name = "number")
+    private Integer number;
+
+
     @ManyToOne
     @JoinColumn(name = "id_tariff", nullable = false)
     private Tariff tariff;
@@ -80,6 +84,13 @@ public class Contract {
 
     public void setIsBlockedByAdmin(Integer isBlockedByAdmin) {
         this.isBlockedByAdmin = isBlockedByAdmin;
+    }
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
 

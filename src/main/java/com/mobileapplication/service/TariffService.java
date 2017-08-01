@@ -12,4 +12,8 @@ public interface TariffService {
     Tariff changeTariff(Tariff tariff);
 
     Tariff getTariffById(Integer id);
+
+    Tariff addNewTariff(Tariff tariff);
+
+    void removeTariff(Integer id);
 }

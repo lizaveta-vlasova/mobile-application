@@ -19,7 +19,7 @@ public class Client {
     @Column(name = "passport_number")
     private String passport_number;
     @Column(name = "adress")
-    private String adress;
+    private String address;
     @Column(name = "email")
     private String email;
     @Column(name = "password")
@@ -33,11 +33,11 @@ public class Client {
     private List<Contract> contracts;
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -74,11 +74,11 @@ public class Client {
     }
 
     public String getAddress() {
-        return adress;
+        return address;
     }
 
     public void setAddress(String address) {
-        this.adress = address;
+        this.address = address;
     }
 
     public String getEmail() {

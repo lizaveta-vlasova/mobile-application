@@ -91,31 +91,10 @@ function numberBlock(contractId){
 }
 function blockByUser(contractId){
     window.location.replace('/clientAccount/block/'+contractId +'/blocked/');
-    /*$.ajax({
-        url:'/clientAccount/block/'+contractId +'/blocked/',
-        dataType : "html",
-        success: function (data, textStatus) {
-            $("#clientContent")[0].innerHTML = data;
-            cleanActiveLiSelection();
-            $("#liNumberBlock").attr('class', 'active');
-        }
-    })*/
 
 }
 function unblockByUser(contractId){
     window.location.replace('/clientAccount/block/'+contractId +'/unblocked/');
-/*
-    $.ajax({
-        url:'/clientAccount/block/'+contractId +'/unblocked/',
-        dataType : "html",
-        success: function (data, textStatus) {
-            $("#clientContent")[0].innerHTML = data;
-            cleanActiveLiSelection();
-            $("#liNumberBlock").attr('class', 'active');
-        }
-    })
-*/
-
 }
 
 
@@ -123,7 +102,6 @@ function unblockByUser(contractId){
 
 
 function cleanActiveLiSelection() {
-    // $("#clientNavUl")[0].childNodes
     $('#clientNavUl').find('li').removeClass();
 }
 
