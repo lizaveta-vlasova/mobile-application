@@ -10,17 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 
 public class MainController {
-    TariffService tariffService;
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String start() {
-        return "index";
+        return "index1";
     }
 
-    /*@RequestMapping(value = "/tariff", method = RequestMethod.GET)
-    public String getTariffList(Model model){
-        model.addAttribute("tariff", new Tariff());
-        model.addAttribute("tariffList", tariffService.tariffList());
-        return "Tariff";
-    }*/
 }

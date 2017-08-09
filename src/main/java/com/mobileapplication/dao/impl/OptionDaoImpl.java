@@ -24,11 +24,14 @@ public class OptionDaoImpl implements OptionDao {
     }
 
     @Override
-    public Option getOptionById(Integer contractId) {
+    public Option findOptionById(Integer id) {
+        Query query = entityManager.createQuery(" FROM Option e WHERE e.optionId= :id");
+        query.setParameter("id", id);
+        Option option = (Option) query.getSingleResult();
+        return option;
 
-        /*Query query = entityManager.createQuery("FROM Option where contractId = contract.id");
-        List<Option> optionsByContract = (List<Option>) query.getSingleResult();
-        return optionsByContract;*/
-        return null;
     }
+
+
+
 }

@@ -28,14 +28,17 @@
                 <li id="liAddTariff">
                     <a onclick="addTariff()" href="javascript:void(0)">УПРАВЛЕНИЕ ТАРИФАМИ</a>
                 </li>
-                <li id="liEditOptios">
+                <li id="liEditOptions">
                     <a onclick="editOptions()" href="javascript:void(0)">УПРАВЛЕНИЕ ОПЦИЯМИ</a>
                 </li>
-                <li id="liFintContractPage">
+                <li id="liFindContractPage">
                     <a onclick="findContractPage()" href="javascript:void(0)">НАЙТИ КОНТРАКТ</a>
                 </li>
                 <li id="liAddNewClient">
                     <a onclick="addNewClient()" href="javascript:void(0)">НОВЫЙ КЛИЕНТ</a>
+                </li>
+                <li id="liAddNewContract">
+                    <a onclick="addNewContract()" href="javascript:void(0)">НОВЫЙ КОНТРАКТ</a>
                 </li>
 
             </ul>
@@ -43,10 +46,8 @@
     </aside>
 </div>
 
-<div id="contractId" class="${contractId}">
-</div>
-
-<div id="clientContent" class="clientContent">
+<div id="adminContent" class="adminContent">
+    <h2>Вы находитесь на странице администратора</h2>
 </div>
 
 <jsp:include page="../footer.jsp"/>

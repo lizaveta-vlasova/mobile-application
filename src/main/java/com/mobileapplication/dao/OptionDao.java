@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface OptionDao {
     List<Option> findAll();
-    Option getOptionById(Integer contractId);
+    Option findOptionById(Integer id);
+   // Option getOptionById(Integer contractId);
+   // void removeOption(Option option);
 }

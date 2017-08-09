@@ -1,5 +1,7 @@
 package com.mobileapplication.service.ServiceImpl;
 
+import com.mobileapplication.dao.ClientDao;
+import com.mobileapplication.dao.ContractDao;
 import com.mobileapplication.domain.Contract;
 import com.mobileapplication.domain.Option;
 import com.mobileapplication.repository.ContractRepository;
@@ -9,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class ContractServiceImpl implements ContractService {
+
+    @Autowired
+    private ContractDao contractDao;
 
     @Autowired
     private ContractRepository contractRepository;
@@ -83,8 +87,14 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
+    public Contract saveContract(Contract contract) {
+        contractRepository.save(contract);
+        return contract;
+    }
+
+    @Override
     public Contract findContractByNumber(Integer number) {
-        return contractRepository.findContractsByNumber(number);
+        return  contractDao.findContractByNumber(number);
     }
 
 }

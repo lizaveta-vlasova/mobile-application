@@ -48,7 +48,7 @@
     Номер заблокирован
 </div>
 
-<jsp:include page="../footer.jsp"/>
+<jsp:include page="../footerForClient.jsp"/>
 
 </body>
 </html>

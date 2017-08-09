@@ -40,7 +40,8 @@ public class ClientController {
         Client currentClient = loginService.getCurrentClient();
         List<Contract> contractsByClientId = contractService.findContractsByClient_Id(currentClient.getId());
         model.addAttribute("contractsList", contractsByClientId);
-        return "client/clientAccountChooseContract";
+       // return "client/clientAccountChooseContract";
+        return "newClientAccount/dashboard";
     }
 
     @RequestMapping(path = "/clientAccount/{contractId}", method = RequestMethod.GET)
@@ -121,12 +122,6 @@ public class ClientController {
         return "redirect:/clientAccount/" + contractId;
     }
 
-/*    //приходим на страницу заблокированного контракта
-    @RequestMapping(path = "/clientAccountIsBLocked/{contractId}", method = RequestMethod.GET)
-    public String clientAccountIsBlocked(Model model, @PathVariable("contractId") Integer contractId) {
-        model.addAttribute("contractId", contractId);
-        return "/client/clientAccountIsBlocked";
-    }*/
 
     @RequestMapping(path = "/clientAccount/block/{contractId}/unblocked", method = RequestMethod.GET)
     public String getUnblock(Model model, @PathVariable("contractId") Integer contractId) {

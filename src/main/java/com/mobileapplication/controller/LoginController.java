@@ -22,7 +22,7 @@ public class LoginController {
 
     @RequestMapping(path = "/loginForm")
     public String loginForm(Model model) {
-        return "loginForm";
+        return "loginFormNew";
     }
 
     @RequestMapping(path = "/loginForm{idClient}", params = "idClient")

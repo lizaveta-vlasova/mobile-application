@@ -9,6 +9,7 @@ import java.util.Set;
 @Table(name = "contract")
 public class Contract {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 

@@ -26,7 +26,6 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public List<Client> clientList() {
         LOGGER.info("Get full client list");
-//        return clientRepository.findAll();
         return clientDao.findAll();
     }
 
@@ -34,12 +33,13 @@ public class ClientServiceImpl implements ClientService {
     public Client getClientById (Integer id){
         LOGGER.info("Get client by ID");
         return (Client) clientDao.getClientById(id);
-       // return clientRepository.findOne(id);
     }
 
     @Override
-    public Client saveClient(Client client) {
-       return clientRepository.save(client);
+    public void saveClient(Client client) {
+        LOGGER.info("New client add");
+       //return clientRepository.save(client);
+         clientDao.saveClient(client);
     }
 
 }

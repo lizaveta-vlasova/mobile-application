@@ -9,52 +9,32 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
     <link rel="stylesheet", href="style.css">
     <script>
-        <%@include file="../assets/javascript/script.js"%>
+        <%@include file="../../assets/javascript/script.js"%>
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
-        <%@include file="../assets/stylesheets/style.css"%>
+        <%@include file="../../assets/stylesheets/style.css"%>
     </style>
 </head>
 <body>
 <header>
     <a href="/"><img src="http://4vector.com/i/free-vector-happy-mobile-logo_124293_jpg/mobile.jpg" width="150" alt="Whitesquare logo"></a>
-    <%--<form class="form-1" onsubmit="return redirect()">
-        <p class="field">
-            <input type="text"  name="login" placeholder="Логин или емэйл">
-            <i class="icon-user icon-large"></i>
-        </p>
-        <p class="field">
-            <input type="password" name="password" placeholder="Пароль">
-            <i class="icon-lock icon-large"></i>
-        </p>
-        <p class="submit">
-            <button type="submit" name="submit"><i class="icon-arrow-right icon-large"></i></button>
-        </p>
-    </form>--%>
     <nav>
         <ul class="top-menu">
             <li><a href="/hello/tariff">ВСЕ ТАРИФЫ</a></li>
-            <li class="active">О КОМПАНИИ</li>
+            <li>О КОМПАНИИ</li>
             <li id="int_page"><a href="Internet.jsp"> ИНТЕРНЕТ</a></li>
-            <li><a href="/partners/">РОУМИНГ</a></li>
-            <li><a href="/customers/">ТВ</a></li>
-            <li><a href="/projects/">АКЦИИ</a></li>
-            <li><a href="/careers/">КОНТАКТЫ</a></li>
-            <li><a href="/contact/">КОРПОРАТИВНЫМ КЛИЕНТАМ</a></li>
+            <li><a href="">РОУМИНГ</a></li>
+            <li><a href="">ТВ</a></li>
+            <li><a href="">АКЦИИ</a></li>
+            <li><a href="">КОНТАКТЫ</a></li>
+            <li><a href="">КОРПОРАТИВНЫМ КЛИЕНТАМ</a></li>
             <li><a href="/loginForm">ЛИЧНЫЙ КАБИНЕТ</a></li>
         </ul>
     </nav>
 
 
 </header>
-<!--<div id="wrapper">
-    <header></header>
-    <nav></nav>
-    <div id="heading"></div>
-    <aside></aside>
-    <section></section>
-</div>-->
 <div class="team-row">
     <figure>
         <img src="http://am.cdnmob.org/pic/v2/gallery/preview/arhitektura-mosty-40540.jpg" width="96" height="96" alt="">
@@ -80,7 +60,7 @@
 <div class="team-row">
     <figure>
         <img src="http://am.cdnmob.org/pic/v2/gallery/preview/pejzazh-volny-40493.jpg" width="96" height="96" alt="">
-        <figcaption>Jтариф5</figcaption>
+        <figcaption>тариф5</figcaption>
     </figure>
     <figure>
         <img src="http://am.cdnmob.org/pic/v2/gallery/preview/pejzazh-pustynya-40458.jpg" width="96" height="96" alt="">

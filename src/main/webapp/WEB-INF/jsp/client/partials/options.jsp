@@ -3,7 +3,7 @@
 
 <div>
 
-    Для вашего тарифа доступны следующие опции:
+    <h2>Для вашего тарифа доступны следующие опции:</h2>
 
     <c:if test="${!empty tariffOptions}">
 
@@ -11,8 +11,9 @@
         <c:forEach items="${tariffOptions}" var="tariffOption">
 
             <div class="optionContainer" >
+                <ul>
                 <div>
-                       <p>${tariffOption.type}</p>
+                   <li> <h3>${tariffOption.type}</h3>
                 </div>
                 <div>
                     <c:choose>
@@ -24,6 +25,7 @@
                         </c:otherwise>
                     </c:choose>
                 </div>
+                    </li>  </ul>
             </div>
         </c:forEach>
     </c:if>

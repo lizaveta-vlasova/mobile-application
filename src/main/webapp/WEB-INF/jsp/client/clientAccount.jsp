@@ -70,7 +70,7 @@
 
     <c:choose>
         <c:when test="${isContractBlocked == true}">
-            Номер заблокирован
+            <h2>Номер заблокирован</h2>
         </c:when>
         <c:otherwise>
 
@@ -79,7 +79,7 @@
 
 </div>
 
-<jsp:include page="../footer.jsp"/>
+<jsp:include page="../footerForClient.jsp"/>
 
 </body>
 </html>

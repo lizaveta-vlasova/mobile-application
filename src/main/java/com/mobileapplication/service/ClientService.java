@@ -9,5 +9,5 @@ public interface ClientService {
 
      Client getClientById(Integer id);
 
-     Client saveClient(Client client);
+     void saveClient(Client client);
 }

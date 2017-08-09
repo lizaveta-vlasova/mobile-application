@@ -4,6 +4,10 @@ $(document).ready(function(){
     }
 });
 
+$(document).ready(function () {
+    $('#contractList').BlocksIt();
+})
+
 function tariffChange(contractId) {
     $.ajax({
         url: '/clientAccount/tariff/'+contractId,          // указываем URL и

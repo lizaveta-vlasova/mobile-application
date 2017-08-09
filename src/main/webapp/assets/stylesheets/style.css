@@ -26,6 +26,7 @@ p {
 #wrapper {
     max-width: 960px;
     margin: auto;
+
 }
 header {
     padding: 20px 0;
@@ -84,6 +85,14 @@ footer {
     padding: 10px 0;
     height: 90px;
     margin-top: 100px;
+
+}
+#footerForClient{
+    max-width: 960px;
+    margin: auto;
+    padding: 10px 0;
+    height: 90px;
+    margin-top: 400px;
 
 }
 #sitemap {
@@ -364,9 +373,17 @@ figure div {
     margin-left: 300px;
     margin-top: -130px;
     margin-bottom: 300px;
-    width: 70%;
+    width: 80%;
 }
-table{
+.adminContent{
+    margin-left: 300px;
+    margin-top: -230px;
+    margin-bottom: 25%;
+    width: 80%;
+    height: auto;
+
+}
+.table{
     border: 3px deepskyblue;
 }
 td{
@@ -378,10 +395,12 @@ td{
     width: 200px;
     height: 200px;
     float: left;
+    margin-bottom: 30px;
 }
 
 .tariffContainer div{
     font-size:20px
+
 }
 
 .tariffContainer:not(:first-child){
@@ -398,3 +417,44 @@ td{
     padding: 10px;
 }
 
+#getFoundContractForm{
+    position: relative;
+    right: -10%;
+    top: 15%;
+    margin-right: 500px;
+    margin-left: -10px;
+}
+.contact_form label {font-family:Georgia, Times, "Times New Roman", serif;}
+.contact_form ul {
+    width:750px;
+    list-style-type:none;
+    list-style-position:outside;
+    margin:0px;
+    padding:0px;
+}
+.contact_form li{
+    padding:12px;
+    border-bottom:1px solid #eee;
+    position:relative;
+}
+.contact_form label {
+    width:150px;
+    margin-top: 3px;
+    display:inline-block;
+    float:left;
+    padding:3px;
+}
+.contact_form input {
+    height:20px;
+    width:220px;
+    padding:5px 8px;
+}
+.contact_form textarea {padding:8px; width:300px;}
+
+#addOption{
+    height: auto;
+
+}
+.addOption{
+    margin-top: 30px;
+}

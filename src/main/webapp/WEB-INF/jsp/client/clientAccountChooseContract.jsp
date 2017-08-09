@@ -8,8 +8,8 @@
     <title>Личный кабинет</title>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
 
-    <link href="<c:url value="../../assets/stylesheets/style.css" />" rel="stylesheet">
-    <script src="<c:url value="../../assets/lib/jquery-3.2.1.js" />"></script>
+    <link href="<c:url value="../../../assets/stylesheets/style.css" />" rel="stylesheet">
+    <script src="<c:url value="../../../assets/lib/jquery-3.2.1.js" />"></script>
     <%--<script src="<c:url value="../../assets/javascript/clientAccount.js"/>"></script>--%>
 </head>
 <body>
@@ -29,16 +29,19 @@
         </aside>
     </div>
 
-    <div id="clientContent" class="clientContent" style="margin-top: -30px">
+    <div id="clientContent" class="clientContent" style="margin-top: -50px">
+        <div class="contractListForClient" style="margin-bottom: 30px"><h1>Список Ваших контрактов:</h1></div>
         <c:if test="${!empty contractsList}">
             <c:forEach items="${contractsList}" var="contract">
                 <div class="tariffContainer">
                     <div>
-                            ${contract.id}
+                     <h3>Номер телефона</h3>       ${contract.number}
                     </div>
                     <div>
-                            ${contract.tariff.name}
+                          <p>Ваш тариф:${contract.tariff.name}</p>
                     </div>
+                    <div><p>Номер контракта: ${contract.id}</p></div>
+
                     <div>
                         <form action="/clientAccount/${contract.id}" method="get">
                             <input type="submit" value="Подробнее"/>
@@ -51,7 +54,10 @@
     </div>
 </main>
 
-<jsp:include page="../footer.jsp"/>
+
+    <jsp:include page="../footerForClient.jsp"/>
+
+
 
 </body>
 </html>

@@ -31,7 +31,7 @@ public class OptionServiceImpl implements OptionService {
 
     @Override
     public Option findOptionById(Integer optionId) {
-        return optionRepository.findOne(optionId);
+        return optionDao.findOptionById(optionId);
     }
 
     @Override

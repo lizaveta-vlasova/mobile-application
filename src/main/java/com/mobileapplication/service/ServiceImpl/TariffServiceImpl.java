@@ -1,6 +1,9 @@
 package com.mobileapplication.service.ServiceImpl;
 
 
+import com.mobileapplication.dao.OptionDao;
+import com.mobileapplication.dao.TariffDao;
+import com.mobileapplication.domain.Option;
 import com.mobileapplication.domain.Tariff;
 import com.mobileapplication.repository.TariffRepository;
 import com.mobileapplication.service.TariffService;
@@ -15,9 +18,15 @@ public class TariffServiceImpl implements TariffService {
     @Autowired
     private TariffRepository tariffRepository;
 
+    @Autowired
+    private OptionDao optionDao;
+
+    @Autowired
+    private TariffDao tariffDao;
+
     @Override
     public List<Tariff> tariffList() {
-        return tariffRepository.findAll();
+        return tariffDao.findAll();
     }
 
     @Override
@@ -27,7 +36,7 @@ public class TariffServiceImpl implements TariffService {
 
     @Override
     public Tariff getTariffById(Integer id) {
-        return tariffRepository.findOne(id);
+        return  tariffDao.getTariffById(id);
     }
 
     @Override
@@ -36,8 +45,24 @@ public class TariffServiceImpl implements TariffService {
     }
 
     @Override
-    public void removeTariff(Integer id) {
-     tariffRepository.delete(id);
+    public void removeTariff(Tariff tariff) {
+     tariffRepository.delete(tariff);
+    }
+
+    @Override
+    public void addOptionByTariffId(Integer tariffId, Integer optionId) {
+        Tariff tariff = tariffRepository.findOne(tariffId);
+        Option option = optionDao.findOptionById(optionId);
+        tariff.getAvailableOptions().add(option);
+        tariffRepository.save(tariff);
+    }
+
+    @Override
+    public void removeOptionByTariffId(Integer tariffId, Integer optionId) {
+        Tariff tariff = tariffRepository.findOne(tariffId);
+        Option option = optionDao.findOptionById(optionId);
+        tariff.getAvailableOptions().remove(option);
+        tariffRepository.save(tariff);
     }
 
 }

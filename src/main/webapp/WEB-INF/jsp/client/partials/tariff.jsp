@@ -3,21 +3,15 @@
 
 
 <div>
-    Тарифы
 
     <c:if test="${!empty tariffList}">
         <c:forEach items="${tariffList}" var="tariff">
             <div class="tariffContainer">
                 <div>
-                        ${tariff.name}
+                     <h3>Тариф: ${tariff.name}</h3>
                 </div>
                 <div>
-                        ${tariff.price}
-                </div>
-                <div>
-                    <c:forEach items="${tariff.availableOptions}" var="tariffOption">
-                        <p>${tariffOption.type} ${tariffOption.connectionPrice}
-                    </c:forEach>
+                       Абонентская плата:  ${tariff.price} р./мес.
                 </div>
                 <div>
                     <c:choose>
