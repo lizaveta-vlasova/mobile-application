@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -35,7 +36,8 @@ public class AdminController {
 
     @RequestMapping(path = "/adminAccount")
     public String adminAccount(){
-        return "admin/adminAccount";
+        return "newAdminAccount/newAdminAccount";
+        //return "admin/adminAccount";
     }
 
 
@@ -49,6 +51,40 @@ public class AdminController {
     public String pageToAddTariff(Model model) {
         model.addAttribute("tariffList", tariffService.tariffList());
         return  "admin/partials/addTariff";
+    }
+    @RequestMapping(path = "/adminAccount/editTariff/{tariffId}")
+    public String editTariff(Model model, @PathVariable ("tariffId") Integer tariffId) {
+        model.addAttribute("tariff", tariffService.getTariffById(tariffId));
+        model.addAttribute("optionList", optionService.optionList());
+        return  "newAdminAccount/partials/editTariff";
+    }
+
+    @RequestMapping("/adminAccount/editTariff/updateTariff/{tariffId}")
+    public String saveEditTariff(@ModelAttribute ("tariff") Tariff tariff,
+                                 @PathVariable ("tariffId") Integer tariffId,
+                                 Model model){
+        Tariff currentTariff = tariffService.getTariffById(tariffId);
+        currentTariff.setName(tariff.getName());
+        currentTariff.setPrice(tariff.getPrice());
+        tariffService.addNewTariff(currentTariff);
+        model.addAttribute("tariffId", currentTariff.getId());
+        return "redirect:/adminAccount/editTariff/"+tariffId;
+    }
+    @RequestMapping("/adminAccount/editTariff/{tariffId}/add/{optionId}")
+    public String editTariffAddOption(@PathVariable ("tariffId") Integer tariffId,
+                                      @PathVariable("optionId") Integer optionId,
+                                      Model model){
+        tariffService.addOptionByTariffId(tariffId, optionId);
+        model.addAttribute("tariffId", tariffId);
+        return "redirect:/adminAccount/editTariff/"+tariffId;
+    }
+    @RequestMapping("/adminAccount/editTariff/{tariffId}/remove/{optionId}")
+    public String editTariffRemoveOption(@PathVariable ("tariffId") Integer tariffId,
+                                      @PathVariable("optionId") Integer optionId,
+                                      Model model){
+        tariffService.removeOptionByTariffId(tariffId, optionId);
+        model.addAttribute("tariffId", tariffId);
+        return "redirect:/adminAccount/editTariff/"+tariffId;
     }
 
 

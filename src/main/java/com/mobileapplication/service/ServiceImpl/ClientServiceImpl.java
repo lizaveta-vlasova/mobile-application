@@ -38,8 +38,8 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void saveClient(Client client) {
         LOGGER.info("New client add");
-       //return clientRepository.save(client);
-         clientDao.saveClient(client);
+        clientRepository.save(client);
+         //clientDao.saveClient(client);
     }
 
 }

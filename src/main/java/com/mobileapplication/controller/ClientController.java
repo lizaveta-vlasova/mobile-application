@@ -40,8 +40,14 @@ public class ClientController {
         Client currentClient = loginService.getCurrentClient();
         List<Contract> contractsByClientId = contractService.findContractsByClient_Id(currentClient.getId());
         model.addAttribute("contractsList", contractsByClientId);
+        model.addAttribute("client", currentClient);
        // return "client/clientAccountChooseContract";
-        return "newClientAccount/dashboard";
+        return "newClientAccount/clientAccountChooseContracr";
+    }
+    @RequestMapping (path = "/clientAccount/userInfo/{clientId}")
+    public String userInfo(Model model, @PathVariable("clientId") Integer clientId){
+        model.addAttribute("client", clientService.getClientById(clientId));
+        return "newClientAccount/partials/clientProfile";
     }
 
     @RequestMapping(path = "/clientAccount/{contractId}", method = RequestMethod.GET)
@@ -51,7 +57,8 @@ public class ClientController {
 
         model.addAttribute("contractId", contractId);
         model.addAttribute("isContractBlocked", isContractBlocked);
-        return "client/clientAccount";
+        model.addAttribute("contract", currentContract);
+        return "newClientAccount/newClientAccount";
     }
 
     @RequestMapping(path = "/clientAccount/tariff/{contractId}", method = RequestMethod.GET)

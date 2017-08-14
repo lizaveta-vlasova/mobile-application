@@ -5,29 +5,33 @@
 
     <h2>Для вашего тарифа доступны следующие опции:</h2>
 
-    <c:if test="${!empty tariffOptions}">
+    <div>
+        <c:if test="${!empty tariffOptions}">
+            <c:forEach items="${tariffOptions}" var="tariffOption">
+                <div class="col-md-3 col-sm-6">
+                    <div class="serviceBox">
+                        <div class="service-icon">
+                            <i class="fa fa-globe"></i>
+                        </div>
 
+                        <div class="service-content">
+                            <h3 class="title">${tariffOption.type}</h3>
+                        </div>
+                        <div>
+                            <c:choose>
+                                <c:when test="${currentOptions.contains(tariffOption)}">
+                                    <button  value="idOption" onclick="deleteOption(${contractId}, ${tariffOption.optionId})">Удалить опцию</button>
+                                </c:when>
+                                <c:otherwise>
+                                    <button value="idOption" onclick="addOption(${contractId}, ${tariffOption.optionId})">Добавить опцию</button>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
 
-        <c:forEach items="${tariffOptions}" var="tariffOption">
-
-            <div class="optionContainer" >
-                <ul>
-                <div>
-                   <li> <h3>${tariffOption.type}</h3>
+                    </div>
                 </div>
-                <div>
-                    <c:choose>
-                        <c:when test="${currentOptions.contains(tariffOption)}">
-                            <button  value="idOption" onclick="deleteOption(${contractId}, ${tariffOption.optionId})">Удалить опцию</button>
-                        </c:when>
-                        <c:otherwise>
-                            <button value="idOption" onclick="addOption(${contractId}, ${tariffOption.optionId})">Добавить опцию</button>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-                    </li>  </ul>
-            </div>
-        </c:forEach>
-    </c:if>
 
+            </c:forEach>
+        </c:if>
+    </div>
 </div>

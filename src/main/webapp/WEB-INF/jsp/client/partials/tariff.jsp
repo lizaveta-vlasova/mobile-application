@@ -3,34 +3,40 @@
 
 
 <div>
-
     <c:if test="${!empty tariffList}">
         <c:forEach items="${tariffList}" var="tariff">
-            <div class="tariffContainer">
-                <div>
-                     <h3>Тариф: ${tariff.name}</h3>
-                </div>
-                <div>
-                       Абонентская плата:  ${tariff.price} р./мес.
-                </div>
-                <div>
-                    <c:choose>
-                        <c:when test="${currentTariffId == tariff.id}">
-                            <button onclick="">Действующий тариф</button>
-                        </c:when>
-                        <c:otherwise>
-                            <button value="tariffId" onclick="showTariffChangeConfirmation(${tariff.id})">Сменить тариф</button>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="serviceBox">
+            <div class="service-icon">
+                <i class="fa fa-globe"></i>
             </div>
-        </c:forEach>
-    </c:if>
 
+            <div class="service-content">
+                <h3 class="title">${tariff.name} </h3>
+                <p class="description">
+                    Абонентская плата ${tariff.price}
+                </p>
+            </div>
+            <div>
+                <c:choose>
+                    <c:when test="${currentTariffId == tariff.id}">
+                        <button onclick="" class="read">Действующий тариф</button>
+                    </c:when>
+                    <c:otherwise>
+                        <button value="tariffId" class="read" onclick="showTariffChangeConfirmation(${tariff.id})">Сменить тариф</button>
+                    </c:otherwise>
+                </c:choose>
+                        <button class="read" href="">Подробнее о тарифе</button>
+            </div>
+
+        </div>
+    </div>
+
+    </c:forEach>
+    </c:if>>
     <div id="myDialog" title="Dialog box">
         <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;">
         </span>Вы уверены, что хотите перейти на этот тариф?</p>
     </div>
-
 
 </div>

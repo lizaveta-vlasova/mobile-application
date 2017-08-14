@@ -4,16 +4,13 @@ $(document).ready(function(){
     }
 });
 
-$(document).ready(function () {
-    $('#contractList').BlocksIt();
-})
 
 function tariffChange(contractId) {
     $.ajax({
         url: '/clientAccount/tariff/'+contractId,          // указываем URL и
         dataType : "html",                     // тип загружаемых данных
         success: function (data, textStatus) { // вешаем свой обработчик на функцию success
-            $("#clientContent")[0].innerHTML = data;
+            $("#content")[0].innerHTML = data;
             cleanActiveLiSelection();
             $("#liTariffChange").attr('class', 'active');
 
@@ -34,10 +31,23 @@ function tariffChange(contractId) {
                     }
                 }
             });
-            // $("#liTariffChange")[0].class = "active";
+            cleanActiveLiSelection();
+            $("#liTariffChange").attr('class', 'active');
         }
     });
 }
+function userInformation(clientId) {
+    $.ajax({
+        url:'/clientAccount/userInfo/' + clientId,
+        dataType : "html",
+        success: function (data, textStatus) {
+            $("#content")[0].innerHTML = data;
+            cleanActiveLiSelection();
+            $("#liUserInformation").attr('class', 'active');
+        }
+    })
+}
+
 
 function showTariffChangeConfirmation(tariffId) {
     $("#myDialog")
@@ -50,7 +60,7 @@ function optionsChange(contractId){
         url:'/clientAccount/options/'+contractId,
         dataType : "html",
         success: function (data, textStatus) {
-            $("#clientContent")[0].innerHTML = data;
+            $("#content")[0].innerHTML = data;
             cleanActiveLiSelection();
             $("#liOptionsChange").attr('class', 'active');
         }
@@ -62,7 +72,7 @@ function addOption(contractId, idOption){
         url:'/clientAccount/options/' + contractId + '/add/' + idOption,
         dataType : "html",
         success: function (data, textStatus) {
-            $("#clientContent")[0].innerHTML = data;
+            $("#content")[0].innerHTML = data;
             cleanActiveLiSelection();
             $("#liOptionsChange").attr('class', 'active');
         }
@@ -74,7 +84,7 @@ function deleteOption(contractId, idOption){
         url:'/clientAccount/options/' + contractId + '/remove/' + idOption,
         dataType : "html",
         success: function (data, textStatus) {
-            $("#clientContent")[0].innerHTML = data;
+            $("#content")[0].innerHTML = data;
             cleanActiveLiSelection();
             $("#liOptionsChange").attr('class', 'active');
         }
@@ -86,7 +96,7 @@ function numberBlock(contractId){
         url:'/clientAccount/block/'+contractId ,
         dataType : "html",
         success: function (data, textStatus) {
-            $("#clientContent")[0].innerHTML = data;
+            $("#content")[0].innerHTML = data;
             cleanActiveLiSelection();
             $("#liNumberBlock").attr('class', 'active');
         }
