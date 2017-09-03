@@ -1,10 +1,11 @@
 package com.mobileapplication.service;
 
 
+import com.mobileapplication.domain.Option;
 import com.mobileapplication.domain.Tariff;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
+import java.util.Set;
 
 public interface TariffService {
     List<Tariff>tariffList();
@@ -19,4 +20,5 @@ public interface TariffService {
 
     void addOptionByTariffId(Integer tariffId, Integer optionId);
     void removeOptionByTariffId(Integer tariffId, Integer optionId);
+    boolean isOptionsCompatible(Set<Option> uncompatibleOption, Set<Option> optionList);
 }

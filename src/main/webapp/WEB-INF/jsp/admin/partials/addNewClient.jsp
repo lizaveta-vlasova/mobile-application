@@ -21,13 +21,13 @@
         <div class="form-group">
             <label for="date_of_birth" class="col-sm-2 control-label">Дата рождения</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="date_of_birth" name="date_of_birth" placeholder="Дата рождения" required>
+                <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" placeholder="Дата рождения" required>
             </div>
         </div>
         <div class="form-group">
             <label for="passport_number" class="col-sm-2 control-label">Номер паспорта</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="passport_number" name="passport_number" placeholder="Номер паспорта" required>
+                <input type="text" minlength="6"  class="form-control" id="passport_number" name="passport_number" placeholder="Номер паспорта" required>
             </div>
         </div>
         <div class="form-group">
@@ -39,7 +39,7 @@
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
             </div>
         </div>
         <div class="form-group">
@@ -51,7 +51,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
-                <button type="submit" value="Сохранить" id="addTariff">Сохранить</button></div>
+                <button  class="btn btn-info" type="submit" value="Сохранить" id="addTariff">Сохранить</button></div>
         </div>
     </form>
 

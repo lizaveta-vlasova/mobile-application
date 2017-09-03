@@ -1,6 +1,11 @@
 package com.mobileapplication.domain;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.*;
 
 
@@ -17,7 +22,8 @@ public class Tariff {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)/*(cascade = CascadeType.ALL, fetch = FetchType.EAGER)*/
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
             name = "tariff_options",
             joinColumns = { @JoinColumn(name = "id_tariff") },

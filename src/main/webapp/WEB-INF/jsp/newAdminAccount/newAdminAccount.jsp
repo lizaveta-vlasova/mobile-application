@@ -10,13 +10,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
     <title>Администратор</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-    <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
-    <script type="text/javascript" src="../../../assets/lib/blocksit.js"></script>
+
 
 
     <!-- Bootstrap core CSS     -->
@@ -37,6 +35,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="../../../clientAccountSettings/assets/css/themify-icons.css" rel="stylesheet">
+
 
 </head>
 <body>
@@ -140,14 +139,23 @@
 </body>
 
 <!--   Core JS Files   -->
-<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-<script src="../../../clientAccountSettings/assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="../../../assets/javascript/adminAccount.js"></script>
-<script src="../../../assets/javascript/data.js"></script>
 
-<link href="../../../assets/lib/jquery-ui.css" rel="stylesheet">
+<script src="../../../assets/javascript/data.js"></script>
+<link href="../../../assets/lib/select2.min.css" rel="stylesheet">
 <script src="../../../assets/lib/jquery-3.2.1.js"></script>
+<script src="../../../clientAccountSettings/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../../../assets/lib/select2.min.js"></script>
+<%--<script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>--%>
+<link href="../../../assets/lib/jquery-ui.css" rel="stylesheet">
 <script src="../../../assets/lib/jquery-ui.js"></script>
+<link href="../../../assets/lib/sweetalert.css" rel="stylesheet">
+<script src="../../../assets/lib/sweetalert-dev.js"></script>
+<script src="../../../assets/javascript/adminAccount.js"></script>
+
+
+
+
+
 <!--  Checkbox, Radio & Switch Plugins -->
 <script src="../../../clientAccountSettings/assets/js/bootstrap-checkbox-radio.js"></script>
 
@@ -158,12 +166,14 @@
 <script src="../../../clientAccountSettings/assets/js/bootstrap-notify.js"></script>
 
 <!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+<%--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>--%>
 
 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 <script src="../../../clientAccountSettings/assets/js/paper-dashboard.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<%--<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script--%>>
+<%--
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+--%>
 
 
 

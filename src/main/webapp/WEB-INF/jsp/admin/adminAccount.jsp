@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>MobileMain</title>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <link href="<c:url value="../../../assets/stylesheets/style.css" />" rel="stylesheet">
     <link href="<c:url value="../../../assets/lib/jquery-ui.css" />" rel="stylesheet">
     <script src="<c:url value="../../../assets/lib/jquery-3.2.1.js" />"></script>

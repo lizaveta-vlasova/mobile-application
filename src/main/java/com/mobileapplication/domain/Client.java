@@ -1,5 +1,6 @@
 package com.mobileapplication.domain;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.List;
 
@@ -25,6 +26,16 @@ public class Client {
     @Column(name = "password")
     private String password;
 
+    /*public Client(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public Client(Integer id, String password) {
+        this.password = password;
+        this.id = id;
+    }*/
+
     @OneToMany(
             mappedBy = "client",
             cascade = CascadeType.ALL,
@@ -32,6 +43,18 @@ public class Client {
     )
     private List<Contract> contracts;
 
+
+    /*@Enumerated(EnumType.STRING)
+    private Role role;
+
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }*/
 
     public Integer getId() {
         return id;

@@ -23,6 +23,8 @@ public interface ContractService {
     void userUnblockedByAdmin(Contract contract);
     Contract saveContract(Contract contract);
 
-    Contract findContractByNumber(Integer number);
+    Contract findContractByNumber(String number);
+
+    void removeContract(Integer contractId);
 }
 

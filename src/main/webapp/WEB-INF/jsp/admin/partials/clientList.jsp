@@ -3,15 +3,15 @@
 
 
 <div class="clientList">
-    <table class="table table-hover" id="clientList">
+    <table class="table table-striped" id="clientList">
         <thead>
-        <th>#</th>
-        <th>ИМЯ</th>
-        <th>ФАМИЛИЯ</th>
-        <th>ДАТА РОЖДЕНИЯ</th>
-        <th>EMAIL</th>
-        <th>ПАСПОРТ</th>
-        <th>АДРЕС</th>
+        <th style="text-align: center;">ID</th>
+        <th style="text-align: center;">ИМЯ</th>
+        <th style="text-align: center;">ФАМИЛИЯ</th>
+        <th style="text-align: center;">ДАТА РОЖДЕНИЯ</th>
+        <th style="text-align: center;">EMAIL</th>
+        <th style="text-align: center;">ПАСПОРТ</th>
+        <th style="text-align: center;">АДРЕС</th>
         </thead>
         <tbody>
         <tr>
@@ -19,12 +19,12 @@
 
     <c:forEach items="${clientList}" var="client">
             <th scope="row">${client.id}</th>
-        <td>${client.first_name}</td>
-        <td>${client.second_name}</td>
-        <td>${client.date_of_birth}</td>
-        <td>${client.email}</td>
-        <td>${client.passport_number}</td>
-        <td>${client.address}</td></tr>
+        <td style="text-align: center;">${client.first_name}</td>
+        <td style="text-align: center;">${client.second_name}</td>
+        <td style="text-align: center;">${client.date_of_birth}</td>
+        <td style="text-align: center;">${client.email}</td>
+        <td style="text-align: center;">${client.passport_number}</td>
+        <td style="text-align: center;">${client.address}</td></tr>
     </c:forEach>
         </c:if>
         </tbody>

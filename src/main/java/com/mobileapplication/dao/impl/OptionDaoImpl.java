@@ -6,12 +6,15 @@ import com.mobileapplication.domain.Client;
 import com.mobileapplication.domain.Option;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Set;
 
 @Component
+@EnableTransactionManagement
 public class OptionDaoImpl implements OptionDao {
     @Autowired
     private EntityManager entityManager;
@@ -32,6 +35,12 @@ public class OptionDaoImpl implements OptionDao {
 
     }
 
+    @Override
+    public void removeOption(Option option) {
+        Option option1 = entityManager.find(Option.class, option.getOptionId());
+            entityManager.remove(option1);
+
+    }
 
 
 }

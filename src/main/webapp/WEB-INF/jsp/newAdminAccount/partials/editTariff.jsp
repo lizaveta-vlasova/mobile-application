@@ -1,67 +1,63 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="demo">
-    <div class="container">
+
+
+<div class="flex-box-buttom-second">
+    <div><button type="button" class="btn btn-info active btn-md" id="editTariffLeftButton " onclick="editTariff(${tariff.id})" style="width: 300px">Информация о тарифе</button></div>
+<div><button type="button" class="btn btn-info btn-md" id="editTariffCentralButton " onclick="changeDataTariff(${tariff.id})" style="width: 300px">Изменить тариф</button></div>
+<div><button type="button" class="btn btn-info btn-md" id="addTariffLeftButton " onclick="addAndRemoveOptionsForTariff(${tariff.id})" style="width: 300px">Выбрать опции</button></div></div>
+
+</div>
+
+<div class="container" id="containerForEditTariff">
+    <div class="row">
+
         <div class="row">
-            <div class="col-md-6" style="width: 100%">
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingOne">
-                            <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <div class="col-md-1 text-center" style="width: 90%; margin-top: 50px;">
+                <div class="box">
+                    <div class="box-content">
+                        <h1 class="tag-title">${tariff.name}</h1>
+                        <hr />
+                        <p style="text-align: left">Абонентская плата: ${tariff.price}</p>
+                        <p style="text-align: left">Подключенные опции:</p> <c:forEach items="${tariff.availableOptions}" var="option">
+                        <ul style="text-align: left"><li>${option.type}</li></ul></c:forEach>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%--<div>
+
                                     Информация о тарифе
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+
                             <div class="panel-body">
                                 <p class="editTariff">Название тарифа:  <b>${tariff.name}</b></p>
                                 <p class="editTariff">Стоимость тарифа: <b>${tariff.price}</b></p>
                                 <p class="editTariff">Подключенные опции:
                                     <c:forEach items="${tariff.availableOptions}" var="option">
                                 <ul><li>${option.type}</li></ul></c:forEach>                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingTwo">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+
                                     Изменение данных
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="panel-body">
+
+
                                 <form role="form" class="form-inline" id="updateTariff" action="javascript:void(null);" method="post" onsubmit="saveEditTariff(${tariff.id})" style="margin-top: 20px">
-                                    <%--@declare id="name"--%><%--@declare id="price"--%>
+                                    &lt;%&ndash;@declare id="name"&ndash;%&gt;&lt;%&ndash;@declare id="price"&ndash;%&gt;
                                     <div class="form-group"><label for="name">Введите название:</label><input type="text" name="name"></div>
 
                                     <div class="form-group"> <label for="price">Введите стоимость:</label><input type="text" name="price"></div>
 
                                     <div class="form-group"> <input type="submit" value="Сохранить"></div>
                                 </form>                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingThree">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+
                                    Добавление/удаление опций для тарифа
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                            <div class="panel-body">
-                                <div class="container" style="margin-top: 40px">
-                                    <div class="row">
+
+
                                         <c:if test="${!empty optionList}">
                                             <c:forEach items="${optionList}" var="option">
-                                                <div class="col-md-4 col-sm-6">
-                                                    <div class="serviceBoxEdit">
-                                                        <div class="service-icon">
-                                                            <i class="fa fa-globe"></i>
-                                                        </div>
+
                                                         <div class="service-content">
                                                             <h3>${option.type}</h3>
                                                         </div>
@@ -74,17 +70,6 @@
                                                                     <button value="idOption" onclick="addOptionsForTariff(${tariff.id}, ${option.optionId})">Добавить опцию</button>
                                                                 </c:otherwise>
                                                             </c:choose>
-                                                        </div>
-                                                    </div>
-                                                </div>
+
                                             </c:forEach>
-                                        </c:if>                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    </div>
-</div>
+                                        </c:if>                 --%>

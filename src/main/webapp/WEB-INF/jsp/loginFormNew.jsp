@@ -18,11 +18,10 @@
 </div>
 <br>
 <div class="login">
-    <c:url value="/j_spring_security_check" var="loginUrl" />
     <form action="/loginForm{id}" method="get">
     <input type="text" placeholder="username" name="idClient"><br>
     <input type="password" placeholder="password" name="password"><br>
-    <button type="submit" name="button" value="Войти"/>
+        <button type="submit" name="button" value="Войти">Войти</button>
     </form>
 </div>
 </body>

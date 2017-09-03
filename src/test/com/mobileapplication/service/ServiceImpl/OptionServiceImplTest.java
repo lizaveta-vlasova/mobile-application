@@ -10,7 +10,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -31,7 +33,7 @@ public class OptionServiceImplTest {
     public void setup() throws Exception{
         MockitoAnnotations.initMocks(this);
 
-        List<Option> optionList = new ArrayList<>();
+       List<Option> optionList = new ArrayList<>();
         Option option = new Option();
         option.setOptionId(1);
         optionList.add(option);

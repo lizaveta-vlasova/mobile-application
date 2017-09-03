@@ -8,11 +8,15 @@ import com.mobileapplication.repository.ContractRepository;
 import com.mobileapplication.repository.OptionRepository;
 import com.mobileapplication.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ContractServiceImpl implements ContractService {
 
     @Autowired
@@ -93,8 +97,15 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public Contract findContractByNumber(Integer number) {
+    public Contract findContractByNumber(String number) {
         return  contractDao.findContractByNumber(number);
+    }
+
+    @Override
+    public void removeContract(Integer contractId) {
+       Contract contract = contractRepository.findOne(contractId);
+       //contractRepository.delete(contract);
+        contractDao.deleteContractById(contractId);
     }
 
 }

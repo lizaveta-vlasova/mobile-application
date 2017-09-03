@@ -4,11 +4,13 @@ package com.mobileapplication.domain;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "options")
-public class Option implements Comparable<Option>{
+public class Option implements Comparable<Option> , Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idoption")
@@ -19,6 +21,14 @@ public class Option implements Comparable<Option>{
     private Integer price;
     @Column(name = "connection_price")
     private Integer connectionPrice;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "incompatibleoptions",
+            joinColumns = { @JoinColumn(name = "optionId") },
+            inverseJoinColumns = { @JoinColumn(name = "incompatibleId") }
+    )
+    private Set<Option> incompatibleOptions;
 
     public Integer getOptionId() {
         return optionId;
@@ -70,5 +80,13 @@ public class Option implements Comparable<Option>{
     @Override
     public int hashCode() {
         return optionId.hashCode();
+    }
+
+    public Set<Option> getIncompatibleOptions() {
+        return incompatibleOptions;
+    }
+
+    public void setIncompatibleOptions(Set<Option> incompatibleOptions) {
+        this.incompatibleOptions = incompatibleOptions;
     }
 }

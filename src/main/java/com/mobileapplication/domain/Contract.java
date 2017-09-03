@@ -18,7 +18,7 @@ public class Contract {
     private Client client;
 
     @Column(name = "number")
-    private Integer number;
+    private String number;
 
 
     @ManyToOne
@@ -86,11 +86,11 @@ public class Contract {
     public void setIsBlockedByAdmin(Integer isBlockedByAdmin) {
         this.isBlockedByAdmin = isBlockedByAdmin;
     }
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

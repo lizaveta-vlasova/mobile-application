@@ -10,9 +10,14 @@ import com.mobileapplication.service.OptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.management.relation.Role;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -36,10 +41,6 @@ public class LoginController {
             return "redirect:/clientAccount/chooseContract";}
     }
 
-    @RequestMapping(path = "/clientAccount/tariffLogin{id}", params = "id")
-    public String redirectToChangeTariff(Model model,Integer id){
-                Contract currentcontract = loginService.tariffLoginContract(id);
-        return "redirect:/clientAccount/chooseTheTariff";
-    }
+
 }
 

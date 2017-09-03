@@ -4,11 +4,12 @@ import com.mobileapplication.dao.ClientDao;
 import com.mobileapplication.domain.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
-
+@Transactional
 @Component
 public class ClientDaoImpl implements ClientDao {
 
@@ -39,5 +40,6 @@ public class ClientDaoImpl implements ClientDao {
         query.setParameter(5, client.getAddress());
         query.setParameter(6, client.getEmail());
         query.setParameter(7, client.getPassword());
+        query.executeUpdate();
     }
 }
