@@ -11,7 +11,7 @@ function tariffChange(contractId) {
         dataType : "html",                     // тип загружаемых данных
         success: function (data, textStatus) { // вешаем свой обработчик на функцию success
             $("#content")[0].innerHTML = data;
-            cleanActiveLiSelection();
+            $(".sidebar-wrapper ul li").removeClass('active');
             $("#liTariffChange").attr('class', 'active');
 
             $("#myDialog").dialog({
@@ -31,7 +31,7 @@ function tariffChange(contractId) {
                     }
                 }
             });
-            cleanActiveLiSelection();
+            $(".sidebar-wrapper ul li").removeClass('active');
             $("#liTariffChange").attr('class', 'active');
         }
     });
@@ -42,7 +42,7 @@ function userInformation(clientId) {
         dataType : "html",
         success: function (data, textStatus) {
             $("#content")[0].innerHTML = data;
-            cleanActiveLiSelection();
+            $(".sidebar-wrapper ul li").removeClass('active');
             $("#liUserInformation").attr('class', 'active');
         }
     })
@@ -61,7 +61,7 @@ function optionsChange(contractId){
         dataType : "html",
         success: function (data, textStatus) {
             $("#content")[0].innerHTML = data;
-            cleanActiveLiSelection();
+            $(".sidebar-wrapper ul li").removeClass('active');
             $("#liOptionsChange").attr('class', 'active');
         }
     })
@@ -97,17 +97,27 @@ function numberBlock(contractId){
         dataType : "html",
         success: function (data, textStatus) {
             $("#content")[0].innerHTML = data;
-            cleanActiveLiSelection();
+            $(".sidebar-wrapper ul li").removeClass('active');
             $("#liNumberBlock").attr('class', 'active');
         }
     })
 
 }
 function blockByUser(contractId){
+    sweetAlert({
+        title: "Выполнено",
+        text: "Номер заблокирован!",
+        type: "success"
+    });
     window.location.replace('/clientAccount/block/'+contractId +'/blocked/');
 
 }
 function unblockByUser(contractId){
+    sweetAlert({
+        title: "Выполнено",
+        text: "Номер разблокирован!",
+        type: "success"
+    });
     window.location.replace('/clientAccount/block/'+contractId +'/unblocked/');
 }
 

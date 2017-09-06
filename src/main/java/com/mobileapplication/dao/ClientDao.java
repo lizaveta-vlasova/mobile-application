@@ -9,4 +9,5 @@ public interface ClientDao {
     List<Client> findAll();
     Object getClientById(Integer id);
     void saveClient(Client client);
+    Client findByUserEmail(String email);
 }

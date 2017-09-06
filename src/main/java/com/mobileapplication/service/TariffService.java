@@ -10,7 +10,7 @@ import java.util.Set;
 public interface TariffService {
     List<Tariff>tariffList();
 
-    Tariff changeTariff(Tariff tariff);
+    void changeTariff(Tariff tariff);
 
     Tariff getTariffById(Integer id);
 

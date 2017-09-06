@@ -1,6 +1,7 @@
 package com.mobileapplication.dao.impl;
 
 import com.mobileapplication.dao.ContractDao;
+import com.mobileapplication.domain.Client;
 import com.mobileapplication.domain.Contract;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.List;
 
 @Component
 @EnableTransactionManagement
@@ -22,11 +24,29 @@ public class ContractDaoImpl implements ContractDao {
     EntityManager entityManager;
 
     @Override
+    public Contract findContractById(Integer id) {
+        Query query = entityManager.createQuery("FROM Contract where id = :id");
+        query.setParameter("id", id);
+        Contract contract = (Contract) query.getSingleResult();
+        return contract;
+    }
+
+    @Override
     public Contract findContractByNumber(String number) {
         Query query = entityManager.createQuery("from Contract where number = :number");
         query.setParameter("number", number);
         Contract contract = (Contract) query.getSingleResult();
         return contract;
+    }
+
+    @Override
+    public void save(Contract entity) {
+        entityManager.persist(entity);
+    }
+
+    @Override
+    public void update(Contract contract) {
+        entityManager.merge(contract);
     }
 
     @Override
@@ -38,4 +58,13 @@ public class ContractDaoImpl implements ContractDao {
             entityManager.remove(contract);
         }
     }
+
+    @Override
+    public List<Contract> findContractsByClient(Client client) {
+        Query query = entityManager.createQuery("SELECT c FROM Contract c WHERE c.client.id = :id");
+        query.setParameter("id", client.getId());
+        return (List<Contract>) query.getResultList();
+    }
+
+
 }

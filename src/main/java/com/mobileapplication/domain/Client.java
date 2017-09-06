@@ -2,11 +2,13 @@ package com.mobileapplication.domain;
 
 import javax.management.relation.Role;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "client")
-public class Client {
+public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idClient")
@@ -21,20 +23,12 @@ public class Client {
     private String passport_number;
     @Column(name = "adress")
     private String address;
-    @Column(name = "email")
+    @Column(name = "email", unique = true, nullable = false, length = 45)
     private String email;
     @Column(name = "password")
     private String password;
-
-    /*public Client(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
-    public Client(Integer id, String password) {
-        this.password = password;
-        this.id = id;
-    }*/
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client")
+    private Set<ClientRole> clientRoles;
 
     @OneToMany(
             mappedBy = "client",
@@ -42,19 +36,6 @@ public class Client {
             fetch = FetchType.EAGER
     )
     private List<Contract> contracts;
-
-
-    /*@Enumerated(EnumType.STRING)
-    private Role role;
-
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }*/
 
     public Integer getId() {
         return id;
@@ -128,4 +109,11 @@ public class Client {
         this.contracts = contracts;
     }
 
+    public Set<ClientRole> getClientRoles() {
+        return clientRoles;
+    }
+
+    public void setClientRoles(Set<ClientRole> clientRoles) {
+        this.clientRoles = clientRoles;
+    }
 }

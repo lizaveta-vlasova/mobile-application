@@ -1,18 +1,18 @@
 package com.mobileapplication.service;
 
+import com.mobileapplication.domain.Client;
 import com.mobileapplication.domain.Contract;
 
 import java.util.List;
 
 
 public interface ContractService {
-    List<Contract> contractList();
 
-    List<Contract> findContractsByClient_Id(Integer idClient);
+    List<Contract> findContractsByClient(Client client);
 
     Contract findContractById(Integer id);
     
-    Contract updateContract(Contract contract);
+    void updateContract(Contract contract);
 
     void addOptionByContractId(Integer optionId, Integer contractId);
     void removeOptionByContractId(Integer optionId, Integer contractId);

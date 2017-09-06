@@ -5,15 +5,14 @@
     });}
     )*/
 
-$(document).ready(function() {
+function initSelect2() {
     $( "#number" ).select2({
+        placeholder: "Введите номер",
         minimumResultsForSearch: -1
         /*placeholder: "Select a State",
-        allowClear: true*/
+         allowClear: true*/
     });
-});
-
-
+}
 
 function clientList(){
     $.ajax({
@@ -434,6 +433,7 @@ function removeContract(contractId){
                 $("#content")[0].innerHTML = data;
                 $(".sidebar-wrapper ul li").removeClass('active');
                 $("#liAddNewContract").attr('class', 'active');
+                initSelect2();
             }
         })
     }

@@ -147,6 +147,5 @@
 	</footer>
 	<!--  end footer  -->
 
-	<script type="text/javascript" src="../ga.js"></script>
 </body>
 </html>

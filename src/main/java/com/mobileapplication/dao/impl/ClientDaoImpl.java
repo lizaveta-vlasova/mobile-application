@@ -42,4 +42,11 @@ public class ClientDaoImpl implements ClientDao {
         query.setParameter(7, client.getPassword());
         query.executeUpdate();
     }
+
+    @Override
+    public Client findByUserEmail(String email) {
+        Query query = entityManager.createQuery("FROM Client where email = :email");
+        query.setParameter("email", email);
+        return (Client) query.getSingleResult();
+    }
 }

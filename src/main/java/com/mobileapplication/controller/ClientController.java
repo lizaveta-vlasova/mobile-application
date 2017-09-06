@@ -38,16 +38,16 @@ public class ClientController {
     @RequestMapping(path = "/clientAccount/chooseContract", method = RequestMethod.GET)
     public String clientAccountChooseContract(Model model) {
         Client currentClient = loginService.getCurrentClient();
-        List<Contract> contractsByClientId = contractService.findContractsByClient_Id(currentClient.getId());
+        List<Contract> contractsByClientId = contractService.findContractsByClient(currentClient);
         model.addAttribute("contractsList", contractsByClientId);
         model.addAttribute("client", currentClient);
        // return "client/clientAccountChooseContract";
-        return "newClientAccount/clientAccountChooseContracr";
+        return "client/clientAccountChooseContracr";
     }
     @RequestMapping (path = "/clientAccount/userInfo/{clientId}")
     public String userInfo(Model model, @PathVariable("clientId") Integer clientId){
         model.addAttribute("client", clientService.getClientById(clientId));
-        return "newClientAccount/partials/clientProfile";
+        return "client/partials/clientProfile";
     }
 
     @RequestMapping(path = "/clientAccount/{contractId}", method = RequestMethod.GET)
@@ -58,7 +58,7 @@ public class ClientController {
         model.addAttribute("contractId", contractId);
         model.addAttribute("isContractBlocked", isContractBlocked);
         model.addAttribute("contract", currentContract);
-        return "newClientAccount/newClientAccount";
+        return "client/newClientAccount";
     }
 
     @RequestMapping(path = "/clientAccount/tariff/{contractId}", method = RequestMethod.GET)
@@ -72,14 +72,13 @@ public class ClientController {
 
     @RequestMapping(path = "/clientAccount/tariff/{contractId}/newTariff/{tariffId}", method = RequestMethod.GET)
     public String changeContractTariff(
-            Model model,
             @PathVariable("contractId") Integer contractId,
             @PathVariable("tariffId") Integer tariffId
     ) {
         Tariff tariff = tariffService.getTariffById(tariffId);
         Contract contract = contractService.findContractById(contractId);
         contract.setTariff(tariff);
-        model.addAttribute(contractService.updateContract(contract));
+        contractService.updateContract(contract);
         return "redirect:/clientAccount/chooseContract";
     }
 

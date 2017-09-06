@@ -42,5 +42,16 @@ public class OptionDaoImpl implements OptionDao {
 
     }
 
+    @Override
+    public void save(Option option) {
+        Query query = entityManager.createNativeQuery("INSERT into options (type, price, connection_price)" +
+                "VALUES (?,?,?)");
+        query.setParameter(1, option.getType());
+        query.setParameter(2,option.getPrice());
+        query.setParameter(3, option.getConnectionPrice());
+        query.executeUpdate();
+
+    }
+
 
 }

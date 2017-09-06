@@ -16,7 +16,6 @@ public interface OptionService {
      * @return
      */
     List<Option> optionList();
-    Option getOptionById(Integer contractId);
     Option findOptionById(Integer optionId);
     void removeOption(Option option);
     void saveOption(Option option);

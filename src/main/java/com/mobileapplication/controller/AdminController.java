@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
@@ -37,7 +36,7 @@ public class AdminController {
 
     @RequestMapping(path = "/adminAccount")
     public String adminAccount(){
-        return "newAdminAccount/newAdminAccount";
+        return "admin/newAdminAccount";
         //return "admin/adminAccount";
     }
 
@@ -86,7 +85,7 @@ public class AdminController {
     public String editTariff(Model model, @PathVariable ("tariffId") Integer tariffId) {
         model.addAttribute("tariff", tariffService.getTariffById(tariffId));
         model.addAttribute("optionList", optionService.optionList());
-        return  "newAdminAccount/partials/editTariff";
+        return "admin/partials/editTariff";
     }
 
     @RequestMapping("/adminAccount/editTariff/updateTariff/{tariffId}")
@@ -96,7 +95,7 @@ public class AdminController {
         Tariff currentTariff = tariffService.getTariffById(tariffId);
         currentTariff.setName(tariff.getName());
         currentTariff.setPrice(tariff.getPrice());
-        tariffService.addNewTariff(currentTariff);
+        tariffService.changeTariff(currentTariff);
         model.addAttribute("tariffId", currentTariff.getId());
         return "redirect:/adminAccount/editTariff/"+tariffId;
     }
@@ -198,7 +197,7 @@ public class AdminController {
     public String compatibilityManagementChooseOption(@PathVariable ("optionId")
                                                               Integer optionId, Model model){
         model.addAttribute("optionList", optionService.optionList());
-        model.addAttribute("currentOption", optionService.getOptionById(optionId));
+        model.addAttribute("currentOption", optionService.findOptionById(optionId));
         return "admin/partials/compatibilityManagementOption";
     }
     @RequestMapping(path = "/adminAccount/getCompatible/{optionId}/{currentOptionId}")
@@ -206,7 +205,7 @@ public class AdminController {
             Integer optionId, Model model){
         Option currentOption = optionService.findOptionById(optionId);
         optionService.removeUncompotibleOption(editOptionId, optionId);
-        model.addAttribute("currentOption", optionService.getOptionById(optionId));
+        model.addAttribute("currentOption", optionService.findOptionById(optionId));
         return "redirect:/adminAccount/compatibilityManagement/" +optionId;
     }
 
@@ -215,7 +214,7 @@ public class AdminController {
             Integer optionId, Model model){
         Option currentOption = optionService.findOptionById(optionId);
         optionService.addUncompatibleOption(editOptionId, optionId);
-        model.addAttribute("currentOption", optionService.getOptionById(optionId));
+        model.addAttribute("currentOption", optionService.findOptionById(optionId));
         return "redirect:/adminAccount/compatibilityManagement/" +optionId;
     }
 

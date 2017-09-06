@@ -33,4 +33,20 @@ public class TariffDaoImpl implements TariffDao {
 
     }
 
+    @Override
+    public void update(Tariff entity) {
+        entityManager.merge(entity);
+    }
+
+    @Override
+    public void save(Tariff entity) {
+        entityManager.persist(entity);
+    }
+
+    @Override
+    public void delete(Tariff entity) {
+        Tariff tariff = entityManager.find(Tariff.class, entity.getId());
+        entityManager.remove(tariff);
+    }
+
 }

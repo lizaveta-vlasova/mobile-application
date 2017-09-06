@@ -9,6 +9,6 @@ import java.util.Set;
 public interface OptionDao {
     List<Option> findAll();
     Option findOptionById(Integer id);
-   // Option getOptionById(Integer contractId);
     void removeOption(Option option);
+    void save(Option option);
 }

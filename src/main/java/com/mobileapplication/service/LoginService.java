@@ -1,46 +1,37 @@
 package com.mobileapplication.service;
 
 
+import com.mobileapplication.dao.ClientDao;
 import com.mobileapplication.domain.Client;
 import com.mobileapplication.domain.Contract;
-import com.mobileapplication.domain.Option;
-import com.mobileapplication.domain.Tariff;
-import com.mobileapplication.repository.ClientRepository;
-import com.mobileapplication.repository.ContractRepository;
-import com.mobileapplication.repository.OptionRepository;
-import com.sun.org.apache.bcel.internal.generic.InstructionConstants;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LoginService {
-    @Autowired
-    OptionRepository optionRepository;
+
+
 
     @Autowired
-    ContractRepository contractRepository;
-
-    @Autowired
-    ClientRepository clientRepository;
+    ClientDao clientDao;
 
     Client currentClient;
 
     Contract currentContract;
 
     public Client login(Integer id) {
-        currentClient = clientRepository.findOne(id);
+        currentClient = (Client) clientDao.getClientById(id);
         return currentClient;
     }
 
-    public Contract contractLogin(Integer idClient) {
-        Contract currentContract = contractRepository.findOne(idClient);
-        return currentContract;
+    public void loginByEmail(String email) {
+        currentClient = clientDao.findByUserEmail(email);
     }
 
-    public Option optionLogin(Integer idClient) {
-        Option currentoption = optionRepository.findOne(idClient);
-        return currentoption;
-    }
+
+
+
 
     public Client getCurrentClient() {
         return currentClient;
@@ -50,11 +41,7 @@ public class LoginService {
         this.currentClient = currentClient;
     }
 
-    // метод должке находить тариф по действующему контракту
-    public Contract tariffLoginContract(Integer id){
-        Contract currentContract = contractRepository.findOne(id);
-        return currentContract;
-    }
+
 
 
     public Contract getCurrentContract() {
