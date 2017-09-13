@@ -16,6 +16,13 @@
                 <input type="text" minlength="2" class="form-control" id="price" name="price" placeholder="Стоимость в месяц" required>
             </div>
         </div>
+        <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">Описание тарифа</label>
+            <div class="col-sm-4">
+                <textarea type="text" maxlength="300" class="form-control" id="description" name="description" placeholder="Описание тарифа" required>
+                </textarea>
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">

@@ -3,12 +3,12 @@
 
 <div>
 
-    <h3 style="text-align: center; font-family: serif">Для вашего тарифа доступны следующие опции:</h3>
+    <h3 style="text-align: center; font-family: serif" id="optionList">Для вашего тарифа доступны следующие опции:</h3>
 
     <div id="clientChooseContract">
         <c:if test="${!empty tariffOptions}">
             <c:forEach items="${tariffOptions}" var="tariffOption">
-                <div class="col-md-3 col-sm-6" style="width: 45%; margin-top: 20px; margin-left: 5%">
+                <div class="col-md-3 col-sm-6" style="width: 45%; margin-top: 20px; margin-left: 5%; height: 235px;">
                     <div class="serviceBox1">
                         <div class="service-icon">
                             <i class="fa fa-globe"></i>
@@ -20,10 +20,10 @@
                         <div>
                             <c:choose>
                                 <c:when test="${currentOptions.contains(tariffOption)}">
-                                    <button class="btn btn-info" value="idOption" onclick="deleteOption(${contractId}, ${tariffOption.optionId})">Удалить опцию</button>
+                                    <button class="btn btn-info read-more" value="idOption" onclick="deleteOption(${contractId}, ${tariffOption.optionId})">Удалить опцию</button>
                                 </c:when>
                                 <c:otherwise>
-                                    <button value="idOption" class="btn btn-info" onclick="addOption(${contractId}, ${tariffOption.optionId})">Добавить опцию</button>
+                                    <button value="idOption" class="btn btn-info read-more" onclick="addOption(${contractId}, ${tariffOption.optionId})">Добавить опцию</button>
                                 </c:otherwise>
                             </c:choose>
                         </div>

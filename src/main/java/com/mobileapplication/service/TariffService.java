@@ -3,6 +3,7 @@ package com.mobileapplication.service;
 
 import com.mobileapplication.domain.Option;
 import com.mobileapplication.domain.Tariff;
+import com.mobileapplication.dto.TariffDTO;
 
 import java.util.List;
 import java.util.Set;

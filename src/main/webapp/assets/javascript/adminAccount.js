@@ -7,12 +7,20 @@
 
 function initSelect2() {
     $( "#number" ).select2({
-        placeholder: "Введите номер",
-        minimumResultsForSearch: -1
+        width: '20%',
+        allowClear: true,
+        multiple: false,
+        maximumSelectionSize: 1,
+        placeholder: "Введите номер"
         /*placeholder: "Select a State",
          allowClear: true*/
     });
 }
+
+$(window).ready(function() {
+    $(".loader_inner").fadeOut();
+    $(".loader").delay(400).fadeOut("slow");
+});
 
 function clientList(){
     $.ajax({
@@ -25,6 +33,26 @@ function clientList(){
 
         }
     })
+}
+function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("clientList");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[4];
+        if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
 }
 
 function createNewTariff(){
@@ -60,6 +88,15 @@ function addOptionForTariff(optionId, tariffId){
         success: function (data, textStatus) {
             $("#content")[0].innerHTML = data;
 
+        },
+        error:function (xhr, ajaxOptions, thrownError){
+            if(xhr.status==404) {
+                sweetAlert({
+                    title: "Ошибка",
+                    text: "Вы пытаетесь добавить несовместимую опцию!",
+                    type: "error"
+                });
+            }
         }
     })
 }
@@ -274,6 +311,26 @@ function getUncompatible(option, optionId) {
             }
         })
     }
+    function setAdminRole(clientId) {
+        $.ajax({
+            url:'/adminAccount/setAdminRole/'+ clientId,
+            dataType: "html",
+            success: function (data, textStatus) {
+                $("#content")[0].innerHTML = data;
+            }
+        })
+    }
+
+function setUserRole(clientId) {
+    $.ajax({
+        url:'/adminAccount/setClientRole/'+ clientId,
+        dataType: "html",
+        success: function (data, textStatus) {
+            $("#content")[0].innerHTML = data;
+        }
+    })
+}
+
 
     function saveNewContract() {
         var msg = {
@@ -323,6 +380,15 @@ function getUncompatible(option, optionId) {
                         type: "error"
                     });
                 }
+            }
+        })
+    }
+    function getFoundContractByClientList(number) {
+        $.ajax({
+            url: '/adminAccount/findContractByClientList/' + number,
+            dataType: "html",
+            success: function (data, textStatus) {
+                $("#content")[0].innerHTML = data;
             }
         })
     }
@@ -517,6 +583,90 @@ function removeContract(contractId){
 
 
     }
+
+function changeCLientInformation(clientId) {
+    $.ajax({
+        url: '/adminAccount/clientRefactoring/' + clientId,
+        dataType: "html",
+        success: function (data, textStatus) {
+            $("#content")[0].innerHTML = data;
+            cleanActiveLiSelection();
+            $("liAddNewContract").attr('class', 'active');
+        }
+    })
+
+}
+function updateClientInformation() {
+    var msg = $('#saveNewClientForm').serialize();
+    $.ajax({
+        type: 'POST',
+        url: '/adminAccount/updateClientInformation',
+        data: msg,
+        success: function (data, textStatus) {
+            $("#content")[0].innerHTML = data;
+        }
+    })
+}
+function deleteClient(clientId) {
+    $.ajax({
+        url: '/adminAccount/deleteClient/' + clientId,
+        dataType: "html",
+        success: function (data, textStatus) {
+                sweetAlert({
+                    title: "Выполнено",
+                    text: "Клиент успешно удален!",
+                    type: "success"
+                });
+            $("#content")[0].innerHTML = data;
+
+        }
+    })
+
+}
+function orderList(){
+    $.ajax({
+        url:'/adminAccount/orderList',
+        dataType : "html",
+        success: function (data, textStatus) {
+            $("#content")[0].innerHTML = data;
+            $(".sidebar-wrapper ul li").removeClass('active');
+            $("#liOrders").attr('class', 'active');
+
+        }
+    })
+}
+function deleteOrder(orderId) {
+    $.ajax({
+        url: '/adminAccount/deleteOrder/' + orderId,
+        dataType: "html",
+        success: function (data, textStatus) {
+            sweetAlert({
+                title: "Выполнено",
+                text: "Заявка обработана!",
+                type: "success"
+            });
+            $("#content")[0].innerHTML = data;
+
+        }
+    })
+
+}
+function changeOrderStatus(orderId) {
+    $.ajax({
+        url: '/adminAccount/changeOrderStatus/' + orderId,
+        dataType: "html",
+        success: function (data, textStatus) {
+            sweetAlert({
+                title: "Выполнено",
+                text: "Заявка обработана!",
+                type: "success"
+            });
+            $("#content")[0].innerHTML = data;
+
+        }
+    })
+
+}
 
 
     

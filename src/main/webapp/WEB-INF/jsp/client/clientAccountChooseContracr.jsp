@@ -53,7 +53,7 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/" class="simple-text">
+                <a href="/" class="simple-text" style="margin-bottom: -17px">
                     MobileService
                 </a>
             </div>
@@ -68,7 +68,25 @@
                 <li id="liUserInformation">
                     <a onclick="userInformation(${client.id})" href="javascript:void(0)">
                         <i class="ti-user"></i>
-                        <p>Профиль</p>
+                        <p id="profile">Профиль</p>
+                    </a>
+                </li>
+                <li id="liBucket">
+                    <a onclick="bucket(${client.id})" href="javascript:void(0)">
+                        <i class="ti-shopping-cart"></i>
+                        <p id="bucket">Корзина</p>
+                    </a>
+                </li>
+                <li id="liOrders">
+                    <a onclick="orders(${client.id})" href="javascript:void(0)">
+                        <i class="ti-layers-alt"></i>
+                        <p id="orders">Заявки</p>
+                    </a>
+                </li>
+                <li id="liLogOut">
+                    <a href="<c:url value="/logout" />">
+                        <i class="ti-share-alt"></i>
+                        <p>Выйти</p>
                     </a>
                 </li>
 
@@ -80,14 +98,8 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <img src="../../../assets/img/gardening.jpg" width="105%">
-                    <%--<button type="button" class="navbar-toggle">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar bar1"></span>
-                        <span class="icon-bar bar2"></span>
-                        <span class="icon-bar bar3"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">${client.first_name} ${client.second_name}, добро пожаловать!</a>--%>
+                    <div id="name" style="padding-top: 35px"><i class="" style="margin-left: 229px; margin-top: 43px">
+                   ${client.first_name} ${client.second_name}, добро пожаловать!</i></div>
                 </div>
                 <div class="collapse navbar-collapse">
 
@@ -107,6 +119,18 @@
                                                 <div class="service-icon1"><i class="fa fa-mobile"></i></div>
                                                 <h3 class="title">Номер телефона ${contract.number}</h3>
                                                 <p class="description">Ваш тариф:${contract.tariff.name}</p>
+                                                <p class="description">Статус:
+                                                    <c:choose>
+                                                        <c:when test="${contract.isBlockedByAdmin == 1}">
+                                                заблокирован</p>
+                                                        </c:when>
+                                                <c:when test="${contract.isBlockedByUser == 1}">
+                                                    заблокирован</p>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    активный</p>
+                                                </c:otherwise>
+                                                </c:choose>
                                                 <form action="/clientAccount/${contract.id}" method="get">
                                                     <input type="submit" value="Подробнее" class="btn btn-warning"/>
                                                 </form>

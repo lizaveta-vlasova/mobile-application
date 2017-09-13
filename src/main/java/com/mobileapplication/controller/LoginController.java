@@ -73,11 +73,12 @@ public class LoginController {
      * @param rq Запрос
      * @param rs Ответ
      */
-    @RequestMapping (value = "/logout", method = RequestMethod.POST)
-    public void logout (HttpServletRequest rq, HttpServletResponse rs) {
+    @RequestMapping (value = "/logout", method = RequestMethod.GET)
+    public String logout (HttpServletRequest rq, HttpServletResponse rs) {
 
         SecurityContextLogoutHandler securityContextLogoutHandler = new SecurityContextLogoutHandler();
         securityContextLogoutHandler.logout (rq, rs, null);
+        return "redirect:/loginForm";
 
     }
 

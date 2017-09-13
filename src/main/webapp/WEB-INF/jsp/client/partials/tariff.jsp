@@ -20,7 +20,7 @@
             <div>
                 <c:choose>
                     <c:when test="${currentTariffId == tariff.id}">
-                        <button onclick="" class="btn btn-info" style="width: 172px">Действующий тариф</button>
+                        <button onclick="" class="btn btn-info" style="width: 172px" name="tariff">Действующий тариф</button>
                     </c:when>
                     <c:otherwise>
                         <button value="tariffId" style="width: 172px" class="btn btn-info" onclick="showTariffChangeConfirmation(${tariff.id})">Сменить тариф</button>

@@ -19,7 +19,7 @@
     </div>
 
     <div class="form-group">
-        <label for="connectionPrice" class="col-sm-2 control-label">Стоимость в месяц</label>
+        <label for="connectionPrice" class="col-sm-2 control-label">Стоимость подключения</label>
         <div class="col-sm-4">
             <input type="text" class="form-control" id="connectionPrice" name="connectionPrice" placeholder="Стоимость подключения" required>
         </div>

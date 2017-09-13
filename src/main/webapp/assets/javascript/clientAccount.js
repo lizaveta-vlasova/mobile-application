@@ -48,6 +48,53 @@ function userInformation(clientId) {
     })
 }
 
+function orders(clientId) {
+    $.ajax({
+        url:'/clientAccount/orders/' + clientId,
+        dataType : "html",
+        success: function (data, textStatus) {
+            $("#content")[0].innerHTML = data;
+            $(".sidebar-wrapper ul li").removeClass('active');
+            $("#liOrders").attr('class', 'active');
+        }
+    })
+}
+
+function bucket(clientId) {
+    $.ajax({
+        url:'/clientAccount/bucket/' + clientId,
+        dataType : "html",
+        success: function (data, textStatus) {
+            $("#content")[0].innerHTML = data;
+            $(".sidebar-wrapper ul li").removeClass('active');
+            $("#liBucket").attr('class', 'active');
+        },
+        error:function (xhr, ajaxOptions, thrownError){
+            if(xhr.status==500) {
+                sweetAlert({
+                    title: "Корзина пуста",
+                    text: "Отсутствуют выбранные позиции",
+                    type: "error"
+                });
+            }
+        }
+    })
+}
+function addOrderFromUserProfile(clientId) {
+            window.location.replace('/clientAccount/addOrder/' + clientId);
+            sweetAlert({
+                title: "Заявка отправлена!",
+                text: "Менеджер свяжется с Вами в ближайшее время.",
+                type: "success"
+            });
+
+            /*$("#content")[0].innerHTML = data;
+            $(".sidebar-wrapper ul li").removeClass('active');
+            $("#liChooseContract").attr('class', 'active')*/
+        }
+
+
+
 
 function showTariffChangeConfirmation(tariffId) {
     $("#myDialog")
@@ -104,21 +151,21 @@ function numberBlock(contractId){
 
 }
 function blockByUser(contractId){
+    window.location.replace('/clientAccount/block/'+contractId +'/blocked/');
     sweetAlert({
         title: "Выполнено",
         text: "Номер заблокирован!",
         type: "success"
     });
-    window.location.replace('/clientAccount/block/'+contractId +'/blocked/');
 
 }
 function unblockByUser(contractId){
+    window.location.replace('/clientAccount/block/'+contractId +'/unblocked/');
     sweetAlert({
         title: "Выполнено",
         text: "Номер разблокирован!",
         type: "success"
     });
-    window.location.replace('/clientAccount/block/'+contractId +'/unblocked/');
 }
 
 
@@ -165,6 +212,81 @@ function updateTariff(){
     })
 
 }
+function addOrder(str){
+    var order = str;
+    $.ajax({
+        type: 'POST',
+        url:'/order',
+        data : {order: str},
+        success: function (data, textStatus) {
+            sweetAlert({
+                title: "Выполнено",
+                text: "Заявка добавлена в корзину!",
+                type: "success"
+            });
+
+        }
+    })
+
+}
+function sendOrderToAdmin(orderId) {
+    $.ajax({
+        url:'/order/sendToAdmin/'+orderId,
+        dataType : "html",
+        success: function (data, textStatus) {
+            $("#addContent")[0].innerHTML = data;
+        }
+    })
+}
+/*function addOrderFromUser(orderId) {
+    $.ajax({
+        url:'/order/addOrderByUser/' + orderId,
+        dataType : "html",
+        success: function (data, textStatus) {
+            $("#addContent")[0].innerHTML = data;
+        }
+    })
+}*/
+function addOrderFromUser() {
+    $.ajax({
+        url:'/loginForm',
+        dataType : "html",
+        success: function (data, textStatus) {
+            window.location.replace('/loginForm');
+            //$("#addContent")[0].innerHTML = data;
+        }
+
+    })
+}
+function addOrderFromAnonymous(orderId) {
+    $.ajax({
+        url:'/order/addOrderFromAnonymous/'+orderId ,
+        dataType : "html",
+        success: function (data, textStatus) {
+            $(".page_title")[0].innerHTML = data;
+
+        }
+    })
+
+}
+function sendOrderByAnon() {
+    var msg = $('#clientContactInfo').serialize();
+    $.ajax({
+        type: 'GET',
+        url: '/order/clientContactInfo/' + msg ,
+        data: msg,
+        success: function (data, textStatus) {
+            sweetAlert({
+                title: "Заявка отправлена!",
+                text: "Менеджер свяжется с Вами в ближайшее время.",
+                type: "success"
+            });
+        }
+    })
+}
+
+
+
 
 
 

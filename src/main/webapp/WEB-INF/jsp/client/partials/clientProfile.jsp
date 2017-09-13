@@ -6,7 +6,7 @@
 
 
 
-                        <h3 style="text-align: center; margin-left: -10%; font-family: serif">Информация о клиенте: ${client.first_name} ${client.second_name}</h3>
+                        <h3 style="text-align: center; margin-left: -10%; font-family: serif" id="nameUser">Информация о клиенте: ${client.first_name} ${client.second_name}</h3>
 
                     <div class="panel-body">
                         <div class="row">

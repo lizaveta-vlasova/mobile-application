@@ -45,10 +45,9 @@
         <div class="form-group">
             <label for="password" class="col-sm-2 control-label">Пароль</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="password" name="password" placeholder="Пароль" required>
+                <input type="number" class="form-control" id="password" name="password" placeholder="Пароль" required>
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
                 <button  class="btn btn-info" type="submit" value="Сохранить" id="addTariff">Сохранить</button></div>

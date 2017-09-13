@@ -6,17 +6,18 @@
              http://www.springframework.org/schema/security
              http://www.springframework.org/schema/security/spring-security.xsd">
   <http>
+    <csrf disabled="true" />
     <intercept-url pattern="/" access="permitAll"/>
     <intercept-url pattern="/assets/*" access="permitAll"/>
     <intercept-url pattern="/clientAccountSettings/*" access="permitAll"/>
     <intercept-url pattern="/loginForm**" access="permitAll"/>
+    <intercept-url pattern="/order**" access="permitAll"/>
     <intercept-url pattern="/adminAccount**" access="hasRole('ROLE_ADMIN')" />
     <intercept-url pattern="/adminAccount/*" access="hasRole('ROLE_ADMIN')" />
     <intercept-url pattern="/clientAccount**" access="hasRole('ROLE_USER')" />
     <intercept-url pattern="/clientAccount/*" access="hasRole('ROLE_USER')" />
     <!--<intercept-url pattern="/**" access="hasRole('USER')" />-->
     <form-login login-page='/loginForm'/>
-    <csrf disabled="true" />
     <http-basic entry-point-ref="http403ForbiddenEntryPoint" />
   </http>
 

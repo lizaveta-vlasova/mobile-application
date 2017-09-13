@@ -22,10 +22,10 @@
 			<nav>
 				<ul>
 					<li><a href="about.html">О компании</a></li>
-					<li><a href="services.html">Сервисы</a></li>
+					<li><a href="/services">Сервисы</a></li>
 					<li><a href="work.html">Корпоративным клиентам</a></li>
 					<li><a href="#">Новости</a></li>
-					<li><a href="contact.html">Контакты</a></li>
+					<li><a href="/order/bucket">Корзина</a></li>
 					<li><a href="/loginForm">Личный кабинет</a></li>
 				</ul>
 			</nav>

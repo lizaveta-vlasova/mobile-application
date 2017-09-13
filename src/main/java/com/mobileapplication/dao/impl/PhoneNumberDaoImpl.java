@@ -18,7 +18,7 @@ public class PhoneNumberDaoImpl implements PhoneNumberDao{
     @Override
     public List<PhoneNumber> findAll() {
 
-        Query query = entityManager.createQuery("SELECT e FROM PhoneNumber e");
+        Query query = entityManager.createQuery("SELECT e FROM PhoneNumber e where e.contractId = null ");
         List numbers = query.getResultList();
         return (List<PhoneNumber>) numbers;
     }

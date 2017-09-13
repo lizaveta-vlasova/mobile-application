@@ -6,15 +6,15 @@
 
     <div >
         <div>
-            <h3 style="text-align: center; font-family: serif">Блокировка/разблокировка контракта</h3>
+            <h3 style="text-align: center; font-family: serif" id="block">Блокировка/разблокировка контракта</h3>
         </div>
         <div>
             <c:choose>
                 <c:when test="${currentContract.isBlockedByUser == 0}">
-                    <button   style="margin-left: 38%; margin-top: 5%" class="btn btn-danger" value="contractId" onclick="blockByUser(${currentContract.id})">Заблокировать номер</button>
+                    <button  id="button" style="margin-left: 38%; margin-top: 5%" class="btn btn-danger" value="contractId" onclick="blockByUser(${currentContract.id})">Заблокировать номер</button>
                 </c:when>
                 <c:otherwise>
-                    <button  style="margin-left: 38%; margin-top: 5%" class="btn btn-success" value="contractId" onclick="unblockByUser(${currentContract.id})">Разблокировать номер</button>
+                    <button  id="button" style="margin-left: 38%; margin-top: 5%" class="btn btn-success" value="contractId" onclick="unblockByUser(${currentContract.id})">Разблокировать номер</button>
                 </c:otherwise>
             </c:choose>
         </div>

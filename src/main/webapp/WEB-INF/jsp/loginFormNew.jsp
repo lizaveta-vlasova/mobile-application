@@ -20,9 +20,9 @@
 <div class="login">
     <%--<form id="loginForm" action="login"  method="get" onsubmit="login();" >--%>
     <form id="loginForm" action="javascript:void(null);" method="get" onsubmit="login();">
-        <input type="text" placeholder="email" name="email"><br>
-        <input type="password" placeholder="password" name="password"><br>
-        <button type="submit" name="button" value="Войти">Войти</button>
+        <input type="text" placeholder="email" name="email" id="email"><br>
+        <input type="password" placeholder="password" name="password" id="password"><br>
+        <button type="submit" name="button" value="Войти" id="entry">Войти</button>
         <input type="hidden" name="authorization" value="Basic MTIzQHlhLnJ1OjEyMzQ1" />
     </form>
 </div>

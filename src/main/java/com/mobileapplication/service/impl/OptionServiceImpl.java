@@ -47,9 +47,6 @@ public class OptionServiceImpl implements OptionService {
         Set<Option> uncompatibleOptionsForEditOption = option.getIncompatibleOptions();
         uncompatibleOptionsForEditOption.remove(currentOption);
         uncompatibleOptions.remove(option);
-        optionDao.save(currentOption);
-        optionDao.save(option);
-
     }
 
     @Override
@@ -60,8 +57,6 @@ public class OptionServiceImpl implements OptionService {
         Set<Option> uncompatibleOptionsForEditOption = option.getIncompatibleOptions();
         uncompatibleOptions.add(option);
         uncompatibleOptionsForEditOption.add(currentOption);
-        optionDao.save(option);
-        optionDao.save(currentOption);
 
     }
 }

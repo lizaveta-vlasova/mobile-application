@@ -35,6 +35,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="../../../assets/css/themify-icons.css" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Lato:900,400' rel='stylesheet' type='text/css'>
 
 
 </head>
@@ -90,6 +91,18 @@
                         <p>Новый контракт</p>
                     </a>
                 </li>
+                <li id="liOrders">
+                    <a onclick="orderList()" href="javascript:void(0)">
+                        <i class="ti-bell"></i>
+                        <p>Заявки</p>
+                    </a>
+                </li>
+                <li id="liLogOut">
+                    <a href="<c:url value="/logout" />">
+                        <i class="ti-share-alt"></i>
+                        <p>Выйти</p>
+                    </a>
+                </li>
 
 
             </ul>
@@ -120,7 +133,7 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <h2>Вы находитесь на странице администратора</h2>
+                    <h3 style="font-family: serif; text-align: center">Вы находитесь на странице администратора</h3>
 
 
                 </div>

@@ -1,6 +1,8 @@
 package com.mobileapplication.domain;
 
 
+import com.mobileapplication.dto.ClientDTO;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;

@@ -21,8 +21,8 @@ public class TariffDaoImpl implements TariffDao {
     @Override
     public List<Tariff> findAll() {
         Query query = entityManager.createQuery("SELECT e FROM Tariff e");
-        List tariff = query.getResultList();
-        return (List<Tariff>) tariff;
+        List <Tariff> tariffs = query.getResultList();
+        return (List<Tariff>) tariffs;
     }
     @Override
     public Tariff getTariffById(Integer id) {
@@ -36,17 +36,20 @@ public class TariffDaoImpl implements TariffDao {
     @Override
     public void update(Tariff entity) {
         entityManager.merge(entity);
+        entityManager.flush();
     }
 
     @Override
     public void save(Tariff entity) {
         entityManager.persist(entity);
+        entityManager.flush();
     }
 
     @Override
     public void delete(Tariff entity) {
         Tariff tariff = entityManager.find(Tariff.class, entity.getId());
         entityManager.remove(tariff);
+        entityManager.flush();
     }
 
 }

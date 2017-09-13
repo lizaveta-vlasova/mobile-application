@@ -18,7 +18,9 @@ public interface ContractService {
     void removeOptionByContractId(Integer optionId, Integer contractId);
     void userBlocked (Contract contract);
     void userUnblocked(Contract contract);
-    boolean isContractBlocked (Integer contractId);
+    boolean isContractBlocked(Integer contractId);
+    boolean isContractBlockedByUser (Integer contractId);
+    boolean isContractBlockedByAdmin (Integer contractId);
     void userBlockedByAdmin(Contract contract);
     void userUnblockedByAdmin(Contract contract);
     Contract saveContract(Contract contract);

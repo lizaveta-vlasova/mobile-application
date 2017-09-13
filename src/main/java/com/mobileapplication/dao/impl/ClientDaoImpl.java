@@ -2,6 +2,7 @@ package com.mobileapplication.dao.impl;
 
 import com.mobileapplication.dao.ClientDao;
 import com.mobileapplication.domain.Client;
+import com.mobileapplication.domain.ClientRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
+
+/**
+ * Implementation of ClientDao.
+ */
 @Transactional
 @Component
 public class ClientDaoImpl implements ClientDao {
@@ -16,31 +21,24 @@ public class ClientDaoImpl implements ClientDao {
     @Autowired
     private EntityManager entityManager;
 
-
-
+    @Override
     public List<Client> findAll() {
         Query query = entityManager.createQuery("SELECT e FROM Client e");
         List <Client> clients = query.getResultList();
         return (List<Client>) clients;
     }
 
-    public Object getClientById(Integer id) {
+    @Override
+    public Client getClientById(Integer id) {
         Query query = entityManager.createQuery("FROM Client where id = :id");
         query.setParameter("id", id);
         Client client = (Client) query.getSingleResult();
         return client;
     }
+
+    @Override
     public void saveClient (Client client){
-        Query query = entityManager.createNativeQuery("INSERT into client (first_name, second_name, date_of_birth, passport_number, adress, email, password)" +
-                "VALUES (?,?,?,?,?,?,?)");
-        query.setParameter(1, client.getFirst_name());
-        query.setParameter(2,client.getSecond_name());
-        query.setParameter(3, client.getDate_of_birth());
-        query.setParameter(4, client.getPassport_number());
-        query.setParameter(5, client.getAddress());
-        query.setParameter(6, client.getEmail());
-        query.setParameter(7, client.getPassword());
-        query.executeUpdate();
+     entityManager.persist(client);
     }
 
     @Override
@@ -48,5 +46,25 @@ public class ClientDaoImpl implements ClientDao {
         Query query = entityManager.createQuery("FROM Client where email = :email");
         query.setParameter("email", email);
         return (Client) query.getSingleResult();
+    }
+
+    @Override
+    public void saveRoleForClient(ClientRole entity) {
+        entityManager.persist(entity);
+    }
+
+    @Override
+    public void updateClientInformation(Client client) {
+        entityManager.merge(client);
+    }
+
+    @Override
+    public void deleteClient(Client client) {
+        entityManager.remove(entityManager.merge(client));
+    }
+
+    @Override
+    public void saveRole(ClientRole clientRole) {
+        entityManager.persist(clientRole);
     }
 }

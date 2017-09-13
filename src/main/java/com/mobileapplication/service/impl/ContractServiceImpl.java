@@ -67,22 +67,35 @@ public class ContractServiceImpl implements ContractService {
         contractDao.update(contract);
     }
 
-    public boolean isContractBlocked(Integer contractId) {
+    public boolean isContractBlocked(Integer contractId){
         Contract contract = contractDao.findContractById(contractId);
-        if (contract.getIsBlockedByUser() > 0 || contract.getIsBlockedByAdmin() > 0) return true;
+        if(contract.getIsBlockedByAdmin() > 0 || contract.getIsBlockedByUser() > 0){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isContractBlockedByUser(Integer contractId) {
+        Contract contract = contractDao.findContractById(contractId);
+        if (contract.getIsBlockedByUser() > 0 ) return true;
+        else return false;
+    }
+    public boolean isContractBlockedByAdmin(Integer contractId) {
+        Contract contract = contractDao.findContractById(contractId);
+        if (contract.getIsBlockedByAdmin() > 0 ) return true;
         else return false;
     }
 
     @Override
     public void userBlockedByAdmin(Contract contract) {
         contract.setIsBlockedByAdmin(1);
-        contractDao.save(contract);
+        contractDao.update(contract);
     }
 
     @Override
     public void userUnblockedByAdmin(Contract contract) {
         contract.setIsBlockedByAdmin(0);
-        contractDao.save(contract);
+        contractDao.update(contract);
     }
 
     @Override

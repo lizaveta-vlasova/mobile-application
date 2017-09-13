@@ -22,6 +22,9 @@ public class Tariff {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
+    private String description;
+
     @ManyToMany(fetch = FetchType.EAGER)/*(cascade = CascadeType.ALL, fetch = FetchType.EAGER)*/
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
@@ -77,6 +80,14 @@ public class Tariff {
     }
     public void setContracts(List<Contract> contracts) {
         this.contracts = contracts;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 

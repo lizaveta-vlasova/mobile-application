@@ -16,7 +16,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
-    <script type="text/javascript" src="../../../assets/lib/blocksit.js"></script>
+
 
 
     <!-- Bootstrap core CSS     -->
@@ -44,14 +44,9 @@
 <div class="wrapper">
     <div class="sidebar" data-background-color="white" data-active-color="danger">
 
-        <!--
-            Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
-            Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
-        -->
-
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/">
+                <a href="/" class="simple-text" style="margin-bottom: -16px">
                     MobileService
                 </a>
             </div>
@@ -71,10 +66,10 @@
                 </li>
                 <li id="liTariffChange">
                     <c:choose>
-                        <c:when test="${isContractBlocked == true}">
+                        <c:when test="${isContractBLocked == true}">
 
                             <a><i class="ti-pencil-alt"></i>
-                                <p>Смена тарифа</p></a>
+                                <p style="color: darkgrey">Смена тарифа</p></a>
                         </c:when>
                         <c:otherwise>
                             <a onclick="tariffChange(${contractId})" href="javascript:void(0)">
@@ -85,9 +80,9 @@
                 </li>
                 <li id="liOptionsChange">
                     <c:choose>
-                        <c:when test="${isContractBlocked == true}">
+                        <c:when test="${isContractBLocked == true}">
                             <a><i class="ti-pencil-alt"></i>
-                            <p>Опции</p></a>
+                            <p style="color: darkgrey">Опции</p></a>
                         </c:when>
                         <c:otherwise>
                             <a onclick="optionsChange(${contractId})" href="javascript:void(0)">
@@ -97,9 +92,25 @@
                     </c:choose>
                 </li>
                 <li id="liNumberBlock">
-                    <a onclick="numberBlock(${contractId})" href="javascript:void(0)">
+                    <c:choose>
+                    <c:when test="${isContractBlockedByAdmin == true}">
+                    <a>
                         <i class="ti-unlock"></i>
-                        <p>Блокировать номер</p>
+                        <p style="color: darkgrey">Блокировать номер</p>
+                    </a>
+                    </c:when>
+                        <c:otherwise>
+                            <a onclick="numberBlock(${contractId})" href="javascript:void(0)">
+                            <i class="ti-unlock"></i>
+                            <p>Блокировать номер</p>
+                            </a>
+                        </c:otherwise>
+                    </c:choose>
+                </li>
+                <li id="liLogOut">
+                    <a href="<c:url value="/logout" />">
+                        <i class="ti-share-alt"></i>
+                        <p>Выйти</p>
                     </a>
                 </li>
 
@@ -113,8 +124,8 @@
             <div class="container-fluid">
                 <div class="navbar-header">
 
-                    <a class="navbar-brand" href="#">${contract.client.first_name} ${contract.client.second_name}, добро пожаловать!</a>
-                </div>
+                    <div id="name" style="padding-top: 35px"><i class="" style="margin-left: 229px; margin-top: 43px">
+                        ${contract.client.first_name} ${contract.client.second_name}, добро пожаловать!</i></div>                </div>
                 <div class="collapse navbar-collapse">
 
 
@@ -128,13 +139,16 @@
                 <div class="row">
 
                     <div class="infoAboutContract">
-                        <h2 style="font-family: serif; text-align: center"> Вы выбрали контракт для номера ${contract.number}</h2>
+                        <h3 style="font-family: serif; text-align: center; margin-left: -160px"> Вы выбрали контракт для номера <b>${contract.number}</b></h3>
                         <c:choose>
-                            <c:when test="${isContractBlocked == true}">
-                                <h3 style="text-align: center; font-family: serif">Номер заблокирован</h3>
+                            <c:when test="${isContractBlockedByAdmin == true}">
+                                <h3 style="text-align: center; font-family: serif" id="numberBlock">Номер заблокирован администратором.</h3>
+                            </c:when>
+                            <c:when test="${isContractBlockedByUser == true}">
+                                <h3 style="text-align: center; font-family: serif" id="numberBlock">Номер заблокирован.</h3>
                             </c:when>
                             <c:otherwise>
-                                <p style="text-align: center;">Пожалуйста, выберете действие в боковом меню.</p>
+                                <p style="text-align: center; margin-left: -160px" id="please">Пожалуйста, выберете действие в боковом меню.</p>
                             </c:otherwise>
                         </c:choose>
 
